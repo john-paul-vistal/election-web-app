@@ -1,4 +1,15 @@
-# election-web-app
+# ELECTION WEB APPLICATION SYSTEM
 
-## Set Up Environment
-  npm install
+## Members
+```
+-John Paul Vistal
+-Jaynard Senilla
+-Floyd Villamor
+-Jenie Joy Timalon
+
+```
+
+## Set up the project
+```
+npm install
+```
