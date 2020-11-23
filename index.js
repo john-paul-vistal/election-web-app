@@ -1,11 +1,28 @@
 const express = require("express");
 const bodyParser = require("body-parser");
-
 const app = express();
+const port = 8002
 
-app.use(bodyParser.urlencoded({extended:true}))
-app.use('/public',express.static('public'));
+
+const database = require("./services/database");
+const ElectionSystemAdminRoutes = require("./routes/adminRoute");
+const ElectionSystemVotersRoutes = require("./routes/votersRoute");
+
+app.use(bodyParser.urlencoded({ extended: true }))
+
+app.use('/public', express.static('public'));
+
 app.use(bodyParser.json())
-app.set("view engine","ejs");
+app.set("view engine", "ejs");
 
-app.listen(8002, ()=>{console.log("Server is listening at port 8002")})
+
+
+
+app.use("/ewas.covid.edu/admin", ElectionSystemAdminRoutes);
+app.use("/ewas.covid.edu", ElectionSystemVotersRoutes);
+
+database.connect();
+
+app.listen(port, () => {
+    console.log(`Example app listening on port ${port}!`);
+});
