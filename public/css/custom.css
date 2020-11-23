@@ -2,3 +2,140 @@ body {
     background: linear-gradient(rgb(235, 233, 233), rgb(246, 244, 244)) no-repeat;
     background-size: cover;
 }
+
+html {
+    height: 100%;
+}
+
+#wrapper {
+    padding-left: 250px;
+    transition: all 0.4s ease 0s;
+}
+
+#sidebar-wrapper {
+    margin-left: -230px;
+    top: 60px;
+    left: 250px;
+    width: 230px;
+    background: linear-gradient(#0e0c52, #020461);
+    position: fixed;
+    height: 65%;
+    overflow-y: auto;
+    z-index: 9999;
+    transition: all 0.4s ease 0s;
+}
+
+#wrapper.active {
+    padding-left: 0;
+}
+
+#wrapper.active #header {
+    padding-left: 0;
+}
+
+#wrapper.active #sidebar-wrapper {
+    left: 0;
+}
+
+#page-content-wrapper {
+    width: 100%;
+    padding-top: 70px;
+    padding-left: 15px;
+    padding-right: 15px;
+    transition: all 0.4s ease 0s;
+}
+
+@media (max-width:954px) {
+    #wrapper {
+        padding-left: 0;
+    }
+    #sidebar-wrapper {
+        left: 0;
+    }
+    #wrapper.active {
+        position: relative;
+        left: 250px;
+    }
+    #wrapper.active #sidebar-wrapper {
+        left: 250px;
+        width: 250px;
+        transition: all 0.4s ease 0s;
+    }
+    #menu-toggle {
+        display: inline-block;
+    }
+}
+
+
+/* ------scroll bar--------------------- */
+
+::-webkit-scrollbar {
+    width: 8px;
+    height: 7px;
+}
+
+ ::-webkit-scrollbar-button {
+    width: 8px;
+    height: 0px;
+}
+
+ ::-webkit-scrollbar-thumb {
+    background: #787d86;
+    border: 0px none #ffffff;
+    border-radius: 0px;
+}
+
+ ::-webkit-scrollbar-thumb:hover {
+    background: #787d86;
+}
+
+ ::-webkit-scrollbar-thumb:active {
+    background: #787d86;
+}
+
+ ::-webkit-scrollbar-track {
+    background: transparent;
+    border: 0px none #ffffff;
+    border-radius: 50px;
+}
+
+ ::-webkit-scrollbar-track:hover {
+    background: transparent;
+}
+
+ ::-webkit-scrollbar-track:active {
+    background: transparent;
+}
+
+ ::-webkit-scrollbar-corner {
+    background: transparent;
+}
+
+.dash-card {
+    position: absolute;
+    left: 40%;
+    top: -20px;
+    border-radius: 50%;
+}
+
+@media (max-width:954px) {
+    .dash-card {
+        left: 10%;
+    }
+}
+
+.w3-animate-top {
+    position: relative;
+    animation: animatetop 0.4s
+}
+
+@keyframes animatetop {
+    from {
+        top: -300px;
+        opacity: 0
+    }
+    to {
+        top: 0px;
+        opacity: 1
+    }
+}
