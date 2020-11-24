@@ -1,9 +1,9 @@
 const Student = require("../models/students.model");
 const parseRequestBody = require("../utilities/parseRequestBody");
 
-const getMainPage = (request, response) => {
+const logInPage = (request, response) => {
     try {
-        response.send("Welcome to EWAS(Election Web Application System)")
+        response.render('./voters/login')
     } catch (e) {
         return response.status(400).json({
             error: e,
@@ -11,7 +11,16 @@ const getMainPage = (request, response) => {
     }
 };
 
-
+const electionForm = (request,response) => {
+    try{
+        response.render('./voters/electionForm')
+    }catch(e){
+        return response.status(400).json({
+            error: e,
+        });
+    }
+}
 module.exports = {
-    getMainPage
+    logInPage,
+    electionForm
 };

@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Election Form</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../public/css/voters.css">
+</head>
+<body>
+    <div class="header shadow-lg text-center">
+        <h1>University of San Carlos</h1>
+        <h5>EWAS <br> Online Election Ballot</h5>
+    </div>
+    <div class="card shadow bg-white rounded">
+        <h5 class="role">President Candidates:</h5>
+        <div class="card-body">
+            <div class="custom-control-lg custom-control custom-checkbox">
+                <input class="custom-control-input checkPresident" name="c1" id="p1" type="checkbox" />
+                <label class="custom-control-label" for="p1">
+                    John Paul Vistal
+                </label>
+            </div>
+            <div class="custom-control-lg custom-control custom-checkbox">
+                <input class="custom-control-input checkPresident" id="p2" type="checkbox" />
+                <label class="custom-control-label" for="p2">
+                    Gerald Afable
+                </label>
+            </div>
+            <div class="custom-control-lg custom-control custom-checkbox">
+                <input class="custom-control-input checkPresident" id="p3" type="checkbox" />
+                <label class="custom-control-label" for="p3">
+                    Harvey Aparece
+                </label>
+            </div>
+        </div>
+    </div>
+
+    <div class="card shadow bg-white rounded">
+        <h5 class="role">Vice President Candidates:</h5>
+        <div class="card-body">
+            <div class="custom-control-lg custom-control custom-checkbox">
+                <input class="custom-control-input checkVice" name="c1" id="v1" type="checkbox" />
+                <label class="custom-control-label" for="v1">
+                    Leordan Carmona
+                </label>
+            </div>
+            <div class="custom-control-lg custom-control custom-checkbox">
+                <input class="custom-control-input checkVice" id="v2" type="checkbox" />
+                <label class="custom-control-label" for="v2">
+                    Sernel Asunto
+                </label>
+            </div>
+            <div class="custom-control-lg custom-control custom-checkbox">
+                <input class="custom-control-input checkVice" id="v3" type="checkbox" />
+                <label class="custom-control-label" id="label" for="v3">
+                    Joseph John Magallon
+                </label>
+            </div>
+        </div>
+    </div>
+
+    <div class="card shadow bg-white rounded">
+        <h5 class="role">Secretary Candidates:</h5>
+        <div class="card-body">
+            <div class="custom-control-lg custom-control custom-checkbox">
+                <input class="custom-control-input checkSecretary" name="c1" id="s1" type="checkbox" />
+                <label class="custom-control-label" for="s1">
+                    Kyla Jean Dumaguit
+                </label>
+            </div>
+            <div class="custom-control-lg custom-control custom-checkbox">
+                <input class="custom-control-input checkSecretary" id="s2" type="checkbox" />
+                <label class="custom-control-label" for="s2">
+                    Girly Coca
+                </label>
+            </div>
+            <div class="custom-control-lg custom-control custom-checkbox">
+                <input class="custom-control-input checkSecretary" id="s3" type="checkbox" />
+                <label class="custom-control-label" id="label" for="s3">
+                    Jocelyn Amancio
+                </label>
+            </div>
+            <div class="custom-control-lg custom-control custom-checkbox">
+                <input class="custom-control-input checkSecretary" id="s4" type="checkbox" />
+                <label class="custom-control-label" id="label" for="s4">
+                    Ailyn Albores
+                </label>
+            </div>
+        </div>
+    </div>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script>
+
+    $(document).ready(() => {
+
+        $(".checkPresident").on("click", event => vote(".checkPresident",event,1));
+        $(".checkVice").on("click", event => vote(".checkVice", event, 1));
+        $(".checkSecretary").on("click", event => vote(".checkSecretary", event, 2));
+        let arr = [];
+
+        vote = (roleClass,event,limit) => {
+            console.log("hahaha")
+            if ($("#" + event.target.id).is(":checked")) {
+                arr.push(event.target.id)
+                for (let ids of arr) $("#" + ids).next().addClass('bold')
+                if(limit == $(roleClass+":checked").length){
+                    $(roleClass).parent().parent().parent().removeClass("shadow")
+                    $(roleClass).parent().parent().parent().addClass("box")
+                    $(roleClass).attr("disabled", true)
+                    for (let ids of arr) $("#" + ids).removeAttr('disabled')
+                }
+            } else {
+                arr.splice(arr.indexOf(event.target.id),1);
+                $("#"+event.target.id).next().removeClass('bold')
+                $(roleClass).parent().parent().parent().removeClass("box")
+                $(roleClass).parent().parent().parent().addClass("shadow")
+                $(roleClass).removeAttr("disabled")
+            }            
+        }
+    });
+</script>
+</body>
+</html>

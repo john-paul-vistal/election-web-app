@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Log In</title>
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../../public/css/voters.css">
+</head>
+<style>
+    body {
+    font-family: "Poppins", sans-serif;
+}
+</style>
+<body>
+    <center>
+
+        <div class="wrapper fadeInDown">
+            <div class="main shadow-lg p-5 mb-5 bg-white rounded">
+                <div class="fadeIn first">
+                    <img src="../public/img/pro.png" id="icon" alt="User Icon" />
+                </div>
+
+                <form action="./voting_form" method="POST" autocomplete="off">
+                    <div class="form-group">
+                        <label for="email">
+                            <i class="fa fa-key"></i>
+                        </label>&nbsp;&nbsp;
+                        <input type="text" name="id" placeholder="Enter your id ...">
+                    </div>
+                    <button type="submit" class="btn btn-primary" style="font-size:large;">Start Voting</button>
+                </form>
+            </div>
+        </div>
+</body>
+
+</html>

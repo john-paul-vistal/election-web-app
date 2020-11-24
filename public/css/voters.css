@@ -1,0 +1,149 @@
+
+
+.fadeInDown {
+    -webkit-animation-name: fadeInDown;
+    animation-name: fadeInDown;
+    -webkit-animation-duration: 1s;
+    animation-duration: 1s;
+    -webkit-animation-fill-mode: both;
+    animation-fill-mode: both;
+}
+
+@-webkit-keyframes fadeInDown {
+    0% {
+        opacity: 0;
+        -webkit-transform: translate3d(0, -100%, 0);
+        transform: translate3d(0, -100%, 0);
+    }
+
+    100% {
+        opacity: 1;
+        -webkit-transform: none;
+        transform: none;
+    }
+}
+
+@-webkit-keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+}
+
+@-moz-keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+}
+
+.fadeIn {
+    opacity: 0;
+    -webkit-animation: fadeIn ease-in 1;
+    -moz-animation: fadeIn ease-in 1;
+    animation: fadeIn ease-in 1;
+
+    -webkit-animation-fill-mode: forwards;
+    -moz-animation-fill-mode: forwards;
+    animation-fill-mode: forwards;
+
+    -webkit-animation-duration: 1s;
+    -moz-animation-duration: 1s;
+    animation-duration: 1s;
+}
+
+hr {
+    margin-top: -1%;
+}
+
+input {
+    width: 90%;
+    border: none;
+    padding-top: 30px;
+    background-color: transparent;
+    outline: 0;
+}
+
+.form-group {
+    border: none;
+    border-bottom: 1px solid #999;
+}
+
+.main {
+    margin-top: 10%;
+    background-color: #ffffff;
+    width: 50%;
+    padding: 5%;
+}
+
+/* Election Form Styles */
+
+body {
+    background: linear-gradient(rgb(235, 233, 233), rgb(246, 244, 244)) no-repeat;
+    background-size: cover;
+    height: 100vh;
+    font-family: consolas;
+}
+
+.custom-control-label::before,
+.custom-control-label::after {
+    top: 0.1rem !important;
+    left: -2rem !important;
+    width: 1.5rem;
+    height: 1.5rem;
+}
+
+.custom-checkbox {
+    /* border: solid 1px black; */
+    width: 50%;
+    margin: auto;
+    margin-top: 1%;
+}
+
+.custom-control-lg .custom-control-label {
+    margin-left: 0.5rem !important;
+    font-size: 110% !important;
+}
+
+.role {
+    margin-left: 3%;
+}
+
+.card {
+    width: 80%;
+    margin-left: 10%;
+    margin-top: 2%;
+}
+
+.bold {
+    font-weight: bold;
+}
+
+.shadow {
+    /* box-shadow: 0 0 5px #1aba60; */
+    box-shadow: 0 .5rem 1rem rgba(0, 0, 0, .15);
+}
+
+.box {
+    box-shadow: 0 0 5px #1aba60;
+}
+.header{
+    background:linear-gradient(rgb(34, 136, 219), rgb(31, 223, 236));
+    
+}
