@@ -5,7 +5,7 @@
 -John Paul Vistal
 -Jaynard Senilla
 -Floyd Villamor
--Jenie Joy Timalon
+-Jenie Joy Tomalon
 
 ```
 

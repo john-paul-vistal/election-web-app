@@ -1,4 +1,210 @@
-body {
+body,
+html {
     background: linear-gradient(rgb(235, 233, 233), rgb(246, 244, 244)) no-repeat;
     background-size: cover;
+    height: auto;
+}
+
+#wrapper {
+    padding-left: 250px;
+    transition: all 0.4s ease 0s;
+}
+
+#sidebar-wrapper {
+    margin-left: -230px;
+    top: 75px;
+    left: 250px;
+    width: 230px;
+    background: linear-gradient(#0e0c52, #020461);
+    position: fixed;
+    height: 50%;
+    overflow-y: auto;
+    z-index: 9999;
+    transition: all 0.4s ease 0s;
+    padding-top: 20px;
+}
+
+#wrapper.active {
+    padding-left: 0;
+}
+
+#wrapper.active #header {
+    padding-left: 0;
+}
+
+#wrapper.active #sidebar-wrapper {
+    left: 0;
+}
+
+#page-content-wrapper {
+    width: 100%;
+    padding-top: 70px;
+    padding-left: 15px;
+    padding-right: 15px;
+    transition: all 0.4s ease 0s;
+}
+
+#menuBtn {
+    margin-top: 21px;
+    display: none;
+}
+
+@media (max-width:954px) {
+    #wrapper {
+        padding-left: 0;
+    }
+    #sidebar-wrapper {
+        left: 0;
+    }
+    #wrapper.active {
+        position: relative;
+        left: 250px;
+    }
+    #wrapper.active #sidebar-wrapper {
+        left: 250px;
+        width: 250px;
+        transition: all 0.4s ease 0s;
+    }
+    #menuBtn {
+        display: block;
+    }
+}
+
+
+/* ------scroll bar--------------------- */
+
+::-webkit-scrollbar {
+    width: 8px;
+    height: 7px;
+}
+
+ ::-webkit-scrollbar-button {
+    width: 8px;
+    height: 0px;
+}
+
+ ::-webkit-scrollbar-thumb {
+    background: #787d86;
+    border: 0px none #ffffff;
+    border-radius: 0px;
+}
+
+ ::-webkit-scrollbar-thumb:hover {
+    background: #787d86;
+}
+
+ ::-webkit-scrollbar-thumb:active {
+    background: #787d86;
+}
+
+ ::-webkit-scrollbar-track {
+    background: transparent;
+    border: 0px none #ffffff;
+    border-radius: 50px;
+}
+
+ ::-webkit-scrollbar-track:hover {
+    background: transparent;
+}
+
+ ::-webkit-scrollbar-track:active {
+    background: transparent;
+}
+
+ ::-webkit-scrollbar-corner {
+    background: transparent;
+}
+
+.dash-card {
+    position: absolute;
+    left: 40%;
+    top: -20px;
+    border-radius: 50%;
+}
+
+@media (max-width:954px) {
+    .dash-card {
+        left: 10%;
+    }
+}
+
+.w3-animate-top {
+    position: relative;
+    animation: animatetop .5s
+}
+
+@keyframes animatetop {
+    from {
+        top: -3000px;
+        opacity: 0
+    }
+    to {
+        top: 0px;
+        opacity: 1
+    }
+}
+
+.w3-animate-left {
+    position: relative;
+    animation: animateleft .5s
+}
+
+@keyframes animateleft {
+    from {
+        left: -300px;
+        opacity: 0
+    }
+    to {
+        left: 250px;
+        opacity: 1
+    }
+}
+
+#overlay {
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    background: rgba(161, 161, 161, 0.582);
+    z-index: 999;
+    display: none;
+}
+
+body #overlay {
+    position: fixed;
+    overflow: hidden;
+}
+
+.btn-grad {
+    background-image: linear-gradient(to right, #314755 0%, #26a0da 51%, #314755 100%)
+}
+
+.btn-grad {
+    position: relative;
+    text-align: left;
+    padding-left: 53px;
+    transition: .8s;
+    background-size: 200% auto;
+    display: block;
+}
+
+.btn-grad:hover {
+    background-position: right center;
+    text-decoration: none;
+}
+
+.sideNavIcon {
+    position: absolute;
+    left: 20px;
+    top: 20px;
+}
+
+.search {
+    width: 70%;
+    padding-left: 20px;
+    margin-left: -20px;
+    background: transparent;
+}
+
+.search:focus {
+    outline: none;
 }

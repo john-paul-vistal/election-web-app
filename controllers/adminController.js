@@ -3,7 +3,7 @@ const parseRequestBody = require("../utilities/parseRequestBody");
 
 const getMainPage = (request, response) => {
     try {
-        response.render("dashboard")
+        response.render("./admin/dashboard")
     } catch (e) {
         return response.status(400).json({
             error: e,
