@@ -3,9 +3,9 @@ const router = express.Router();
 
 const VotersControllers = require("../controllers/voterController");
 
-router.get("/login", VotersControllers.logInPage);
+router.get("/", VotersControllers.logInPage);
 
-router.post('/voting_form',VotersControllers.electionForm);
+router.post('/voting_form', VotersControllers.electionForm);
 
 
 module.exports = router;

@@ -24,5 +24,5 @@ app.use("/ewas.covid.edu", ElectionSystemVotersRoutes);
 database.connect();
 
 app.listen(port, () => {
-    console.log(`Example app listening on port ${port}!`);
+    console.log(`Server listening on port ${port}!`);
 });
