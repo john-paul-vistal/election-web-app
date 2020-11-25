@@ -1,5 +1,3 @@
-
-
 .fadeInDown {
     -webkit-animation-name: fadeInDown;
     animation-name: fadeInDown;
@@ -36,7 +34,7 @@ input {
     outline: 0;
 }
 
-.form-group {
+.form-group  {
     border: none;
     border-bottom: 1px solid #999;
 }
@@ -52,6 +50,12 @@ input {
 
 /* Election Form Styles */
 
+/* body {
+    background: linear-gradient(rgb(235, 233, 233), rgb(246, 244, 244)) no-repeat;
+    background-size: cover;
+    height: 100vh;
+    font-family: consolas;
+} */
 
 .custom-control-label::before,
 .custom-control-label::after {
@@ -94,6 +98,7 @@ input {
 .box {
     box-shadow: 0 0 5px #1aba60;
 }
+
 .header{
     background:linear-gradient(rgb(34, 136, 219), rgb(31, 223, 236));
     /* position: fixed;

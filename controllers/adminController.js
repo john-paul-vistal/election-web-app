@@ -11,6 +11,25 @@ const getMainPage = (request, response) => {
     }
 };
 
+const getStudentRegistration = (request, response) => {
+    try {
+        response.render("./admin/studentRegistrationForm")
+    } catch (e) {
+        return response.status(400).json({
+            error: e,
+        });
+    }
+};
+
+const getCandidacyForm = (request, response) => {
+    try {
+        response.render("./admin/candidacyForm")
+    } catch (e) {
+        return response.status(400).json({
+            error: e,
+        });
+    }
+};
 
 const addNewStudent = async (request, response) => {
       
@@ -114,8 +133,13 @@ const updateStudent = async (request, response) => {
 
 module.exports = {
     getMainPage,
+<<<<<<< HEAD
     getStudents,
     addNewStudent,
     deleteStudent,
     updateStudent
+=======
+    getStudentRegistration,
+    getCandidacyForm
+>>>>>>> b36e4417db7580a72503bab5b208f6e82ccb970e
 };

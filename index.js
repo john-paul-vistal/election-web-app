@@ -21,8 +21,12 @@ app.set("view engine", "ejs");
 app.use("/ewas.covid.edu/admin", ElectionSystemAdminRoutes);
 app.use("/ewas.covid.edu", ElectionSystemVotersRoutes);
 
+app.all("*", (request, response, next) => {
+    response.render('middlewares/error404')
+});
+
 database.connect();
 
 app.listen(port, () => {
-    console.log(`Example app listening on port ${port}!`);
+    console.log(`Server listening on port ${port}!`);
 });
