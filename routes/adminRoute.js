@@ -27,6 +27,12 @@ router.put("/candidate/:id", CandidatesControllers.modifyCandidate)
 router.delete("/candidate/delete/:id", CandidatesControllers.deleteCandidate)
     //END CANDIDATE ROUTES
 
+router.post('/registerStudent', AdminControllers.addNewStudent);
 
+router.get('/students',AdminControllers.getStudents);
+
+router.put('/updateStudent/:id',AdminControllers.updateStudent);
+
+router.delete('/deleteStudent/:id',AdminControllers.deleteStudent);
 
 module.exports = router;
