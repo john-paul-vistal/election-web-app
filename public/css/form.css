@@ -1,0 +1,21 @@
+.row > .col > input {
+    border: none;
+    border-bottom: 1px solid #999;
+}
+
+.transparent {
+    background-color: transparent !important;
+    background: transparent !important;
+    border: transparent !important;
+    border-bottom: 1px solid #999 !important;
+}
+
+.form-control {
+    border: none;
+    border-radius: 0;
+    border-bottom: 1px solid #999;
+}
+
+.mt-n20 {
+    margin-top: -20px !important;
+}
