@@ -51,7 +51,6 @@ const getStudents = async (request,response) => {
     
     try {
         const students = await Students.find();
-        // console.log(students[students.length-1]._id)
         if (!students) {
           return response.status(400).json({
             error: "Error in retrieving students!",
