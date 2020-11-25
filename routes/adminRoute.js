@@ -6,13 +6,9 @@ const RegistrationControllers = require("../controllers/adminRegistrationControl
 const CandidatesControllers = require("../controllers/candidateController");
 
 
-<<<<<<< HEAD
-router.get("/dashboard", AdminControllers.getMainPage);
-=======
 router.get("/", AdminControllers.getMainPage);
 router.get("/student-registration", AdminControllers.getStudentRegistration);
 router.get("/candidacy-form", AdminControllers.getCandidacyForm);
->>>>>>> 6824ec3df237f013f8ea969229c6fdbe82c32277
 
 
 // START ADMINISTRATION ROUTES
