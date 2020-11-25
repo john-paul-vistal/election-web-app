@@ -4,7 +4,7 @@
     -webkit-animation-name: fadeInDown;
     animation-name: fadeInDown;
     -webkit-animation-duration: 1s;
-    animation-duration: 1s;
+    animation-duration: .9s;
     -webkit-animation-fill-mode: both;
     animation-fill-mode: both;
 }
@@ -23,50 +23,6 @@
     }
 }
 
-@-webkit-keyframes fadeIn {
-    from {
-        opacity: 0;
-    }
-
-    to {
-        opacity: 1;
-    }
-}
-
-@-moz-keyframes fadeIn {
-    from {
-        opacity: 0;
-    }
-
-    to {
-        opacity: 1;
-    }
-}
-
-@keyframes fadeIn {
-    from {
-        opacity: 0;
-    }
-
-    to {
-        opacity: 1;
-    }
-}
-
-.fadeIn {
-    opacity: 0;
-    -webkit-animation: fadeIn ease-in 1;
-    -moz-animation: fadeIn ease-in 1;
-    animation: fadeIn ease-in 1;
-
-    -webkit-animation-fill-mode: forwards;
-    -moz-animation-fill-mode: forwards;
-    animation-fill-mode: forwards;
-
-    -webkit-animation-duration: 1s;
-    -moz-animation-duration: 1s;
-    animation-duration: 1s;
-}
 
 hr {
     margin-top: -1%;
@@ -92,14 +48,10 @@ input {
     padding: 5%;
 }
 
+
+
 /* Election Form Styles */
 
-body {
-    background: linear-gradient(rgb(235, 233, 233), rgb(246, 244, 244)) no-repeat;
-    background-size: cover;
-    height: 100vh;
-    font-family: consolas;
-}
 
 .custom-control-label::before,
 .custom-control-label::after {
@@ -136,7 +88,6 @@ body {
 }
 
 .shadow {
-    /* box-shadow: 0 0 5px #1aba60; */
     box-shadow: 0 .5rem 1rem rgba(0, 0, 0, .15);
 }
 
@@ -145,5 +96,9 @@ body {
 }
 .header{
     background:linear-gradient(rgb(34, 136, 219), rgb(31, 223, 236));
-    
+    /* position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 2; */
 }
