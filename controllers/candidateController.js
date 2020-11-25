@@ -1,18 +1,16 @@
-const Admin = require("../models/admin.model");
+const Candidate = require("../models/candidate.model");
 const parseRequestBody = require("../utilities/parseRequestBody");
 
-const getAllAdmins = async(request, response) => {
+const getAllCandidate = async(request, response) => {
     try {
-        const admins = await Admin.find();
-        if (!admins) {
+        const candidates = await Candidate.find();
+        if (!candidates) {
             return response.status(400).json({
-                error: "Error in getting admins!",
+                error: "Error in getting candidates!",
             });
         }
 
-        response.render("admin/administration", {
-            admins: admins
-        })
+        response.send(candidates)
 
     } catch (e) {
         return response.status(400).json({
@@ -21,18 +19,18 @@ const getAllAdmins = async(request, response) => {
     }
 };
 
-const getAdminById = async(request, response) => {
+const getCandidateById = async(request, response) => {
     try {
-        const admin = await Admin.find({ _id: request.params.id });
+        const candidate = await Candidate.find({ _id: request.params.id });
 
-        if (!admin || admin.length === 0) {
+        if (!candidate || candidate.length === 0) {
             return response.status(400).json({
-                error: "Admin not found!",
+                error: "Candidate not found!",
             });
         }
 
         response.status(200).json({
-            admin: admin,
+            candidate: candidate,
         });
 
     } catch (e) {
@@ -42,29 +40,29 @@ const getAdminById = async(request, response) => {
     }
 };
 
-const addAdmins = async(request, response) => {
+const addCandidate = async(request, response) => {
     try {
 
-        let newAdmin = new Admin({
+        let newCandidate = new Candidate({
+            id: request.body.id,
             firstname: request.body.firstname,
             lastname: request.body.lastname,
-            email: request.body.email,
-            age: request.body.age,
-            contactNumber: request.body.contactNumber,
-            username: request.body.username,
-            password: request.body.password,
+            middlename: request.body.middlename,
+            position: request.body.position,
+            votes: request.body.votes
         });
 
-        const result = await newAdmin.save();
+        const result = await newCandidate.save();
 
         if (!result) {
             return response.status(400).json({
-                error: "Error in adding new Admin!",
+                error: "Error in adding new Candidate!",
             });
         }
 
         response.status(200).json({
-            message: "New Admin added!",
+            message: "New Candidate added!",
+
         });
 
     } catch (e) {
@@ -74,18 +72,18 @@ const addAdmins = async(request, response) => {
     }
 }
 
-const modifyAdmin = async(request, response) => {
+const modifyCandidate = async(request, response) => {
     try {
         const updates = parseRequestBody(request.body);
-        const result = await Admin.updateOne({ _id: request.params.id }, { $set: updates });
+        const result = await Candidate.updateOne({ _id: request.params.id }, { $set: updates });
         if (!result) {
             return response.status(400).json({
-                error: "Error in updating admin!",
+                error: "Error in updating candidate!",
             });
         }
 
         response.status(200).json({
-            message: "Admin Updated Successfully",
+            message: "Candidate Updated Successfully",
         });
 
     } catch (e) {
@@ -95,9 +93,9 @@ const modifyAdmin = async(request, response) => {
     }
 }
 
-const deleteAdmin = async(request, response) => {
+const deleteCandidate = async(request, response) => {
     try {
-        await Admin.deleteOne({ _id: request.params.id }, (error, result) => {
+        await Candidate.deleteOne({ _id: request.params.id }, (error, result) => {
             if (error) {
                 return response.status(400).json({
                     error: error,
@@ -105,7 +103,7 @@ const deleteAdmin = async(request, response) => {
             }
 
             response.status(200).json({
-                message: "Admin Successfully deleted!",
+                message: "Candidate Successfully deleted!",
             });
         });
     } catch (e) {
@@ -118,9 +116,9 @@ const deleteAdmin = async(request, response) => {
 
 
 module.exports = {
-    getAllAdmins,
-    getAdminById,
-    addAdmins,
-    modifyAdmin,
-    deleteAdmin
+    getAllCandidate,
+    addCandidate,
+    getCandidateById,
+    modifyCandidate,
+    deleteCandidate
 };

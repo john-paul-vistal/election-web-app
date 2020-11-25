@@ -216,3 +216,7 @@ table th {
     z-index: 5;
     background: #fff;
 }
+
+.activeButton {
+    background-image: linear-gradient(to right, #009dff 0%, #52c8ff 51%, #2baeff 100%)
+}
