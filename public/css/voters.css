@@ -7,20 +7,18 @@
     animation-fill-mode: both;
 }
 
-@-webkit-keyframes fadeInDown {
+@keyframes fadeInDown {
     0% {
         opacity: 0;
         -webkit-transform: translate3d(0, -100%, 0);
         transform: translate3d(0, -100%, 0);
     }
-
     100% {
         opacity: 1;
         -webkit-transform: none;
         transform: none;
     }
 }
-
 
 hr {
     margin-top: -1%;
@@ -34,7 +32,7 @@ input {
     outline: 0;
 }
 
-.form-group  {
+.form-group {
     border: none;
     border-bottom: 1px solid #999;
 }
@@ -47,8 +45,8 @@ input {
 }
 
 
-
 /* Election Form Styles */
+
 
 /* body {
     background: linear-gradient(rgb(235, 233, 233), rgb(246, 244, 244)) no-repeat;
@@ -99,8 +97,8 @@ input {
     box-shadow: 0 0 5px #1aba60;
 }
 
-.header{
-    background:linear-gradient(rgb(34, 136, 219), rgb(31, 223, 236));
+.header {
+    background: linear-gradient(rgb(34, 136, 219), rgb(31, 223, 236));
     /* position: fixed;
     top: 0;
     left: 0;

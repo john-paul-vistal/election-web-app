@@ -6,7 +6,7 @@ const RegistrationControllers = require("../controllers/adminRegistrationControl
 const CandidatesControllers = require("../controllers/candidateController");
 
 
-router.get("/", AdminControllers.getMainPage);
+router.get("/dashboard", AdminControllers.getMainPage);
 router.get("/student-registration", AdminControllers.getStudentRegistration);
 router.get("/candidacy-form", AdminControllers.getCandidacyForm);
 
