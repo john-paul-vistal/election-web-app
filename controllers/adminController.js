@@ -133,13 +133,10 @@ const updateStudent = async (request, response) => {
 
 module.exports = {
     getMainPage,
-<<<<<<< HEAD
     getStudents,
     addNewStudent,
     deleteStudent,
-    updateStudent
-=======
+    updateStudent,
     getStudentRegistration,
     getCandidacyForm
->>>>>>> b36e4417db7580a72503bab5b208f6e82ccb970e
 };
