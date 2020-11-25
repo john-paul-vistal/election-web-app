@@ -31,13 +31,13 @@ const getCandidacyForm = (request, response) => {
     }
 };
 
-const addNewStudent = async (request, response) => {
-      
+const addNewStudent = async(request, response) => {
+
     try {
         const id = await Students.find();
-        const lastId = (id.length>0)? id[id.length-1].studentId:100000;
+        const lastId = (id.length > 0) ? id[id.length - 1].studentId : 100000;
         const studentInfo = new Students({
-            studentId: lastId+1,
+            studentId: lastId + 1,
             firstname: request.body.firstname,
             lastname: request.body.lastname,
             middlename: request.body.middlename,
@@ -61,75 +61,72 @@ const addNewStudent = async (request, response) => {
         })
     } catch (e) {
         return response.status(400).json({
-            error: e+""
+            error: e + ""
         })
     }
 }
 
-const getStudents = async (request,response) => {
-    
+const getStudents = async(request, response) => {
+
     try {
         const students = await Students.find();
         if (!students) {
-          return response.status(400).json({
-            error: "Error in retrieving students!",
-          });
+            return response.status(400).json({
+                error: "Error in retrieving students!",
+            });
         }
-    
+
         response.status(200).json({
-         students: students,
+            students: students,
         });
-      } catch (e) {
+    } catch (e) {
         return response.status(400).json({
-          error: e+"",
+            error: e + "",
         });
-      }
+    }
 }
 
-const deleteStudent = async (request,response)=>{
+const deleteStudent = async(request, response) => {
     try {
         await Students.deleteOne({ _id: request.params.id }, (error, result) => {
-          if (error) {
-            return response.status(400).json({
-              error: error,
+            if (error) {
+                return response.status(400).json({
+                    error: error,
+                });
+            }
+
+            response.status(200).json({
+                message: "Successfully deleted book",
+                result: result,
             });
-          }
-    
-          response.status(200).json({
-            message: "Successfully deleted book",
-            result: result,
-          });
         });
-      } catch (e) {
+    } catch (e) {
         return response.status(400).json({
-          error: e,
+            error: e,
         });
-      }
+    }
 }
 
-const updateStudent = async (request, response) => {
+const updateStudent = async(request, response) => {
     const updates = parseRequestBody(request.body);
     try {
-      const result = await Students.updateOne(
-        { _id: request.params.id },
-        { $set: updates }
-      );
-  
-      if (!result) {
-        return response.status(400).json({
-          error: "Error in updating student information!",
+        const result = await Students.updateOne({ _id: request.params.id }, { $set: updates });
+
+        if (!result) {
+            return response.status(400).json({
+                error: "Error in updating student information!",
+            });
+        }
+
+        response.status(200).json({
+            result: result,
         });
-      }
-  
-      response.status(200).json({
-        result: result,
-      });
     } catch (e) {
-      return response.status(400).json({
-        error: e,
-      });
+        return response.status(400).json({
+            error: e,
+        });
     }
-  };
+};
 
 module.exports = {
     getMainPage,

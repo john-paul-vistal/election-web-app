@@ -7,7 +7,10 @@ const CandidatesControllers = require("../controllers/candidateController");
 
 
 router.get("/dashboard", AdminControllers.getMainPage);
+<<<<<<< HEAD
 router.get("/", AdminControllers.getMainPage);
+=======
+>>>>>>> 8b0e0a6107a97b7374867edc009c4f93bf1f398d
 router.get("/student-registration", AdminControllers.getStudentRegistration);
 router.get("/candidacy-form", AdminControllers.getCandidacyForm);
 
@@ -28,12 +31,11 @@ router.put("/candidate/:id", CandidatesControllers.modifyCandidate)
 router.delete("/candidate/delete/:id", CandidatesControllers.deleteCandidate)
     //END CANDIDATE ROUTES
 
+//START STUDENT ROUTES
 router.post('/registerStudent', AdminControllers.addNewStudent);
-
-router.get('/students',AdminControllers.getStudents);
-
-router.put('/updateStudent/:id',AdminControllers.updateStudent);
-
-router.delete('/deleteStudent/:id',AdminControllers.deleteStudent);
+router.get('/students', AdminControllers.getStudents);
+router.put('/updateStudent/:id', AdminControllers.updateStudent);
+router.delete('/deleteStudent/:id', AdminControllers.deleteStudent);
+//END STUDENT ROUTES
 
 module.exports = router;
