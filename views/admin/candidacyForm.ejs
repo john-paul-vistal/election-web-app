@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=, initial-scale=1.0">
-    <title>Student Registration Form</title>
+    <title>Candidacy Form</title>
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
     <link rel="stylesheet" href="../../public/css/voters.css">
@@ -15,18 +15,19 @@
     <center>
         <div class="wrapper fadeInDown">
             <div class="main shadow-lg p-5 mb-5 bg-white rounded">
-                <h3>Student Registration Form</h3>
-                <h5>Fill out the form carefully for registration.</h5><br>
+                <h3>Application for Candidacy</h3>
+                <h5>Fill out the identifying information<br>
+                    to eligibly apply for candidacy.</h5><br>
 
                 <form action="ewas.covid.edu/student_registration_form" method="POST" autocomplete="off">
                     <div class="conatiner">
+                        <div class="float-left" style="margin-left: 13px"><i class="fa fa-user"> Personal
+                                Information</i></div><br>
+
                         <div class="row">
                             <div class="col input-group">
                                 <label for="lName"></label>
                                 <div class="input-group-prepend">
-                                    <div class="input-group-text transparent">
-                                        <i class="fa fa-user"></i>
-                                    </div>
                                     <input type="text" class="mt-n20 transparent" name="lName" placeholder="Last Name">
                                 </div>
                             </div>
@@ -49,7 +50,8 @@
                     </div>
 
                     <div class="conatiner"><br>
-                        <div class="float-left" style="margin-left: 13px"><i class="fa fa-address-book"> Address</i></div><br>
+                        <div class="float-left" style="margin-left: 13px"><i class="fa fa-address-book"> Address</i>
+                        </div><br>
                         <div class="row">
                             <div class="col">
                                 <label for="stAddress"></i></label>
@@ -95,18 +97,39 @@
                     </div>
 
                     <div class="form-group">
-                        <i class="fa fa-phone"></i>
-                        <label for="phone"></label>
-                        <input type="tel" name="phone" pattern="[0-9]{4}-[0-9]{3}-[0-9]{4}" placeholder="0912-345-6789">
-                    </div>
-
-                    <div class="form-group">
                         <i class="fa fa-envelope"></i>
                         <label for="email"></label>
                         <input type="text" name="email" placeholder="Email Address">
                     </div>
 
-                    <button type="submit" class="btn btn-primary" style="font-size:large;">Register</button>
+                    <div class="container">
+                        <div class="row">
+                            <div class="row">
+                                <div class="col-sm">
+                                    <label for="yearLevel"></label>
+                                    <select class="form-control" id="yearLevel">
+                                        <option>Female</option>
+                                        <option>Male</option>
+                                    </select>
+                                </div>
+
+                                <div class="col-sm">
+                                    <label for="section"></label>
+                                    <input type="text" class="form-control" name="email" placeholder="Section">
+                                </div>
+
+                                <div class="col-sm">
+                                    <label for="schoolYear"></label>
+                                    <select class="form-control" id="schoolYear">
+                                        <option>Female</option>
+                                        <option>Male</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                        <br><br>
+
+                        <button type="submit" class="btn btn-primary" style="font-size:large;">Register</button>
                 </form>
             </div>
         </div>

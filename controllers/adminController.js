@@ -11,7 +11,28 @@ const getMainPage = (request, response) => {
     }
 };
 
+const getStudentRegistration = (request, response) => {
+    try {
+        response.render("./admin/studentRegistrationForm")
+    } catch (e) {
+        return response.status(400).json({
+            error: e,
+        });
+    }
+};
+
+const getCandidacyForm = (request, response) => {
+    try {
+        response.render("./admin/candidacyForm")
+    } catch (e) {
+        return response.status(400).json({
+            error: e,
+        });
+    }
+};
 
 module.exports = {
-    getMainPage
+    getMainPage,
+    getStudentRegistration,
+    getCandidacyForm
 };
