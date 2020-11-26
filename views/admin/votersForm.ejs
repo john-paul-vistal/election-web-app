@@ -15,9 +15,9 @@
     <center>
         <div class="wrapper fadeInDown">
             <div class="mainCard shadow-lg p-5 mb-5 bg-white rounded mt-5">
-                <h3 class="mb-4">Administrator Registration Form</h3>
+                <h3 class="mb-4">Voters Registration Form</h3>
                 <hr>
-                <form action="./administration/registration/" method="POST" autocomplete="off">
+                <form action="voter/registration" method="POST" autocomplete="off">
                     <div class="conatiner d-inline mb-3">
                         <div class="form-group d-inline">
                             <i class="fa fa-user"></i>
@@ -49,9 +49,27 @@
                             <div class="col">
                                 <input type="text" name="province" placeholder="Province" required>
                             </div>
-
                             <div class="col">
-                                <input type="text" name="region" placeholder="Region" required>
+                                <select class="form-control" id="region" name="region" style="margin-top: 17px;" required>
+                                    <option>...............</option>
+                                    <option value="PRESIDENT">I</option>
+                                    <option value="VICE-PRISEDENT">II</option>
+                                    <option value="TRASURER">III</option>
+                                    <option value="SECRETARY">IV-A</option>
+                                    <option value="SECRETARY">IV-B</option>
+                                    <option value="AUDITOR">V</option>
+                                    <option value="AUDITOR">CAR</option>
+                                    <option value="AUDITOR">NCR</option>
+                                    <option value="P.I.O">VI</option>
+                                    <option value="REPRESENTATIVE 7">VII</option>
+                                    <option value="REPRESENTATIVE 8">VII</option>
+                                    <option value="REPRESENTATIVE 9">IX</option>
+                                    <option value="REPRESENTATIVE 10">X</option>
+                                    <option value="REPRESENTATIVE 11">XI</option>
+                                    <option value="REPRESENTATIVE 12">XII</option>
+                                    <option value="REPRESENTATIVE 12">XIII</option>
+                                    <option value="REPRESENTATIVE 12">BARMM</option>
+                                </select>
                             </div>
                         </div>
                     </div><br>
@@ -59,12 +77,12 @@
                         <div class="row">
                             <div class="col-sm form-group">
                                 <label for="birthday"><i class="fa fa-birthday-cake"></i></label>
-                                <input type="date" name="birthday" required>
+                                <input type="date" name="birthdate" required>
                             </div>
 
                             <div class="col-sm">
                                 <label for="gender"></label>
-                                <select class="form-control" id="gender" name="gender" required>
+                                <select class="form-control" id="gender" name="gender" style="margin-top: 1px;" required>
                                     <option>....Gender...</option>
                                     <option value="FEMALE">Female</option>
                                     <option value="MALE">Male</option>
@@ -83,7 +101,7 @@
                             <div class="col-4">
                                 <div class="form-group d-inline">
                                     <i class="fa fa-phone"></i>
-                                    <input type="text" name="contactNumber" placeholder="0000-000-0000" required>
+                                    <input type="text" name="contact" placeholder="0000-000-0000" required>
                                 </div>
                             </div>
                             <div class="col">
@@ -94,22 +112,8 @@
                             </div>
                         </div>
                         <br>
-                        <div class="row mb-3">
-                            <div class="col">
-                                <div class="form-group">
-                                    <i class="fa fa-user-check"></i>
-                                    <input type="text" name="username" placeholder="Username" required>
-                                </div>
-                            </div>
-                            <div class="col">
-                                <div class="form-group">
-                                    <i class="fa fa-lock"></i>
-                                    <input type="text" name="password" placeholder="Password" required>
-                                </div>
-                            </div>
-                        </div>
-                        <hr>
                     </div>
+                    <hr>
                     <button type="submit" class="btn btn-primary" style="font-size:large;border-radius: 30px;padding-left: 150px;padding-right: 150px;padding-top: 10px;padding-bottom: 10px;">Register</button>
                 </form>
             </div>

@@ -42,22 +42,41 @@ const getAdminById = async(request, response) => {
     }
 };
 
+function ageCalculator(date) {
+    var birth = new Date(date);
+    var curr = new Date();
+    var diff = curr.getTime() - birth.getTime();
+    return Math.floor(diff / (1000 * 60 * 60 * 24 * 365.25))
+}
+
+function userNameGenerator(fname, lname) {
+    return fname.toLowerCase()[0] + lname.toLowerCase()
+}
+
+function passwordGenerator(fname, lname) {
+    let random = Math.floor(Math.random() * (9999 - 1000 + 1)) + 1000
+    return fname.toLowerCase()[0] + lname.toLowerCase() + random;
+}
+
+
 const addAdmins = async(request, response) => {
     try {
-
         let newAdmin = new Admin({
             firstname: request.body.firstname.toUpperCase(),
             lastname: request.body.lastname.toUpperCase(),
             middlename: request.body.middlename.toUpperCase(),
             email: request.body.email,
-            age: request.body.age,
+            birthDate: request.body.birthDate,
+            gender: request.body.gender,
+            position: request.body.position,
+            age: ageCalculator(request.body.birthDate),
             barangay: request.body.barangay.toUpperCase(),
             municipality: request.body.municipality.toUpperCase(),
             province: request.body.province.toUpperCase(),
             region: request.body.region,
             contactNumber: request.body.contactNumber,
-            username: request.body.username,
-            password: request.body.password,
+            username: userNameGenerator(request.body.firstname, request.body.lastname),
+            password: passwordGenerator(request.body.firstname, request.body.lastname),
         });
 
         const result = await newAdmin.save();

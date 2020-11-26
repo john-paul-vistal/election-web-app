@@ -48,8 +48,8 @@
             <nav class="sidebar-nav">
                 <a href="dashboard" class="btn btn-primary btn-block btn-grad py-3"><i class="sideNavIcon fa fa-list"></i> DASHBOARD</a>
                 <a href="voters" class="btn btn-primary btn-block btn-grad py-3"><i class="sideNavIcon fa fa-users"></i> VOTERS</a>
-                <a href="candidates" class="btn btn-primary btn-block btn-grad py-3"><i class="sideNavIcon fa fa-users"></i> CANDIDATES</a>
-                <a href="administration" class="btn btn-primary btn-block btn-grad py-3 activeButton"><i class="sideNavIcon fa fa-users"></i> ADMINS</a>
+                <a href="candidates" class="btn btn-primary btn-block btn-grad py-3 activeButton"><i class="sideNavIcon fa fa-users"></i> CANDIDATES</a>
+                <a href="administration" class="btn btn-primary btn-block btn-grad py-3"><i class="sideNavIcon fa fa-users"></i> ADMINS</a>
             </nav>
         </div>
         <!-- Page content -->
@@ -61,50 +61,42 @@
                     <div class="bg-white shadow  my-3 rounded">
                         <ol class="breadcrumb bg-white mb-1">
                             <li class="breadcrumb-item active" aria-current="page">Home</li>
-                            <li class="breadcrumb-item active" aria-current="page">Administration</li>
+                            <li class="breadcrumb-item active" aria-current="page">Candidates</li>
                         </ol>
                     </div>
                     <div class="bg-white shadow rounded my-3 p-3" style="height: 800px;">
-                        <p>ADMINISTRATION LIST</p>
+                        <p>CANDIDATES LIST 2020</p>
                         <hr>
-                        <a href="./admin-registration-form"> <button class="btn btn-primary float-right px-5" style="border-radius:30px"><i class="fa fa-plus"></i> ADD</button></a>
+                        <a href="candidate-registration-form"> <button class="btn btn-primary float-right px-5" style="border-radius:30px"><i class="fa fa-plus"></i> ADD</button></a>
                         <label style="margin-left:10px" class="d-inline mt-3" for=""><i class="fa fa-search"></i></label>
                         <input class="search d-inline mt-3 py-2" type="text" placeholder="Search..." style="border:none;border-bottom:1px solid black;width: 50%;margin-left: -20px;">
                         <div class="mt-2 p-2" style="overflow:scroll;height:600px">
                             <table id="header-fixed" class="table">
                                 <thead class="thead-light">
                                     <tr>
+                                        <th scope="col">STUDENT ID</th>
                                         <th scope="col">FULL NAME</th>
                                         <th scope="col">POSITION</th>
-                                        <th scope="col">EMAIL</th>
-                                        <th scope="col">AGE</th>
-                                        <th scope="col">CONTACT NO.</th>
                                         <th scope="col">ACTIONS</th>
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    <% admins.forEach(admin=>{%>
+                                    <% candidates.forEach(candidate=>{%>
                                         <tr>
                                             <td>
-                                                <%=admin.lastname%>,
-                                                    <%=admin.firstname%>
-                                                        <%=admin.middlename%>
+                                                <%=candidate.id%>
                                             </td>
                                             <td>
-                                                <%=admin.position%>
+                                                <%=candidate.lastname%>,
+                                                    <%=candidate.firstname%>
+                                                        <%=candidate.middlename%>
                                             </td>
                                             <td>
-                                                <%=admin.email%>
-                                            </td>
-                                            <td>
-                                                <%=admin.age%>
-                                            </td>
-                                            <td>
-                                                <%=admin.contactNumber%>
+                                                <%=candidate.position%>
                                             </td>
                                             <td>
                                                 <button class="btn btn-warning"><i class="fa fa-eye"></i></button>
-                                                <a href="administration/delete/<%=admin._id%>"><button class="btn btn-danger"><i class="fa fa-trash"></i></button></a>
+                                                <a href="candidate/delete/<%=candidate._id%>"><button class="btn btn-danger"><i class="fa fa-trash"></i></button></a>
                                             </td>
                                         </tr>
                                         <% }); %>

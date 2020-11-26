@@ -4,13 +4,14 @@ const router = express.Router();
 const AdminControllers = require("../controllers/adminController");
 const RegistrationControllers = require("../controllers/adminRegistrationController");
 const CandidatesControllers = require("../controllers/candidateController");
+const VotersControllers = require("../controllers/votersControllers");
 
 
-router.get("/dashboard", AdminControllers.getMainPage);
-router.get("/admin-registration", AdminControllers.getAdminRegistration);
-router.get("/", AdminControllers.getMainPage);
-router.get("/student-registration", AdminControllers.getStudentRegistration);
-router.get("/candidacy-form", AdminControllers.getCandidacyForm);
+router.get("/", AdminControllers.getLogin);
+router.get("/dashboard", AdminControllers.getDashboard);
+router.get("/admin-registration-form", AdminControllers.getAdminRegistration);
+router.get("/voters-registration-form", AdminControllers.getStudentRegistration);
+router.get("/candidate-registration-form", AdminControllers.getCandidacyForm);
 
 
 // START ADMINISTRATION ROUTES
@@ -23,17 +24,17 @@ router.get("/administration/delete/:id", RegistrationControllers.deleteAdmin);
 
 //START CANDIDATE ROUTES
 router.post("/candidate/registration", CandidatesControllers.addCandidate)
-router.get("/candidate/", CandidatesControllers.getAllCandidate)
+router.get("/candidates", CandidatesControllers.getAllCandidate)
 router.get("/candidate/:id", CandidatesControllers.getCandidateById)
 router.put("/candidate/:id", CandidatesControllers.modifyCandidate)
-router.delete("/candidate/delete/:id", CandidatesControllers.deleteCandidate)
+router.get("/candidate/delete/:id", CandidatesControllers.deleteCandidate)
     //END CANDIDATE ROUTES
 
 //START STUDENT ROUTES
-router.post('/registerStudent', AdminControllers.addNewStudent);
-router.get('/students', AdminControllers.getStudents);
-router.put('/updateStudent/:id', AdminControllers.updateStudent);
-router.delete('/deleteStudent/:id', AdminControllers.deleteStudent);
+router.post('/voter/registration', VotersControllers.addNewVoter);
+router.get('/voters', VotersControllers.getAllVoters);
+router.put('/voter/:id', VotersControllers.updateVoter);
+router.get('/voter/delete/:id', VotersControllers.deleteVoter);
 //END STUDENT ROUTES
 
 module.exports = router;

@@ -6,7 +6,7 @@ const port = 8002
 
 const database = require("./services/database");
 const ElectionSystemAdminRoutes = require("./routes/adminRoute");
-const ElectionSystemVotersRoutes = require("./routes/votersRoute");
+const ElectionSystemElectionRoutes = require("./routes/electionRoute");
 
 app.use(bodyParser.urlencoded({ extended: true }))
 
@@ -19,7 +19,7 @@ app.set("view engine", "ejs");
 
 
 app.use("/ewas.covid.edu/admin", ElectionSystemAdminRoutes);
-app.use("/ewas.covid.edu", ElectionSystemVotersRoutes);
+app.use("/ewas.covid.edu", ElectionSystemElectionRoutes);
 
 app.all("*", (request, response, next) => {
     response.render('middlewares/error404')

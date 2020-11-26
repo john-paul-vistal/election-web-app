@@ -13,9 +13,6 @@ const connectToDatabase = () => {
         .catch((error) => console.log(error));
 };
 
-require('../models/candidate.model');
-require('../models/students.model');
-
 module.exports = {
     connect: connectToDatabase,
 };

@@ -32,3 +32,14 @@
     outline: 0;
     box-shadow: none;
 }
+
+.brand_logo {
+    width: 110px;
+}
+
+.loginCard {
+    margin-top: 6%;
+    background-color: #ffffff;
+    width: 50%;
+    padding: 5%;
+}

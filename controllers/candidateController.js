@@ -10,7 +10,7 @@ const getAllCandidate = async(request, response) => {
             });
         }
 
-        response.send(candidates)
+        response.render("./admin/candidates", { candidates: candidates })
 
     } catch (e) {
         return response.status(400).json({
@@ -45,11 +45,10 @@ const addCandidate = async(request, response) => {
 
         let newCandidate = new Candidate({
             id: request.body.id,
-            firstname: request.body.firstname,
-            lastname: request.body.lastname,
-            middlename: request.body.middlename,
-            position: request.body.position,
-            votes: request.body.votes
+            firstname: request.body.firstname.toUpperCase(),
+            lastname: request.body.lastname.toUpperCase(),
+            middlename: request.body.middlename.toUpperCase(),
+            position: request.body.position.toUpperCase(),
         });
 
         const result = await newCandidate.save();
@@ -60,10 +59,7 @@ const addCandidate = async(request, response) => {
             });
         }
 
-        response.status(200).json({
-            message: "New Candidate added!",
-
-        });
+        response.redirect("/ewas.covid.edu/admin/candidates")
 
     } catch (e) {
         return response.status(400).json({
@@ -102,9 +98,7 @@ const deleteCandidate = async(request, response) => {
                 });
             }
 
-            response.status(200).json({
-                message: "Candidate Successfully deleted!",
-            });
+            response.redirect("/ewas.covid.edu/admin/candidates")
         });
     } catch (e) {
         return response.status(400).json({

@@ -47,14 +47,6 @@ input {
 
 /* Election Form Styles */
 
-
-/* body {
-    background: linear-gradient(rgb(235, 233, 233), rgb(246, 244, 244)) no-repeat;
-    background-size: cover;
-    height: 100vh;
-    font-family: consolas;
-} */
-
 .custom-control-label::before,
 .custom-control-label::after {
     top: 0.1rem !important;

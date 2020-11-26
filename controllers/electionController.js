@@ -1,4 +1,3 @@
-const Student = require("../models/students.model");
 const parseRequestBody = require("../utilities/parseRequestBody");
 
 const logInPage = (request, response) => {
@@ -11,10 +10,10 @@ const logInPage = (request, response) => {
     }
 };
 
-const electionForm = (request,response) => {
-    try{
+const electionForm = (request, response) => {
+    try {
         response.render('./voters/electionForm')
-    }catch(e){
+    } catch (e) {
         return response.status(400).json({
             error: e,
         });
