@@ -8,13 +8,14 @@ const CandidatesControllers = require("../controllers/candidateController");
 
 router.get("/dashboard", AdminControllers.getMainPage);
 router.get("/admin-registration", AdminControllers.getAdminRegistration);
+router.get("/", AdminControllers.getMainPage);
 router.get("/student-registration", AdminControllers.getStudentRegistration);
 router.get("/candidacy-form", AdminControllers.getCandidacyForm);
 
 
 // START ADMINISTRATION ROUTES
-router.post("/administration/registration/", RegistrationControllers.addAdmins);
-router.get("/administration/", RegistrationControllers.getAllAdmins);
+router.post("/administration/registration", RegistrationControllers.addAdmins);
+router.get("/administration", RegistrationControllers.getAllAdmins);
 router.get("/administration/:id", RegistrationControllers.getAdminById);
 router.put("/administration/:id", RegistrationControllers.modifyAdmin);
 router.get("/administration/delete/:id", RegistrationControllers.deleteAdmin);

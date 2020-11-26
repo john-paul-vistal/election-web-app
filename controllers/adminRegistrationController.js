@@ -68,7 +68,7 @@ const addAdmins = async(request, response) => {
             });
         }
 
-        response.redirect('../')
+        response.redirect('/ewas.covid.edu/admin/administration')
 
     } catch (e) {
         return response.status(400).json({
@@ -107,7 +107,7 @@ const deleteAdmin = async(request, response) => {
                 });
             }
 
-            response.redirect('../')
+            response.redirect('/ewas.covid.edu/admin/administration')
         });
     } catch (e) {
         return response.status(400).json({
