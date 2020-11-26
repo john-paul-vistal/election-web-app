@@ -46,10 +46,15 @@ const addAdmins = async(request, response) => {
     try {
 
         let newAdmin = new Admin({
-            firstname: request.body.firstname,
-            lastname: request.body.lastname,
+            firstname: request.body.firstname.toUpperCase(),
+            lastname: request.body.lastname.toUpperCase(),
+            middlename: request.body.middlename.toUpperCase(),
             email: request.body.email,
             age: request.body.age,
+            barangay: request.body.barangay.toUpperCase(),
+            municipality: request.body.municipality.toUpperCase(),
+            province: request.body.province.toUpperCase(),
+            region: request.body.region,
             contactNumber: request.body.contactNumber,
             username: request.body.username,
             password: request.body.password,
@@ -63,9 +68,7 @@ const addAdmins = async(request, response) => {
             });
         }
 
-        response.status(200).json({
-            message: "New Admin added!",
-        });
+        response.redirect('/ewas.covid.edu/admin/administration')
 
     } catch (e) {
         return response.status(400).json({
@@ -104,9 +107,7 @@ const deleteAdmin = async(request, response) => {
                 });
             }
 
-            response.status(200).json({
-                message: "Admin Successfully deleted!",
-            });
+            response.redirect('/ewas.covid.edu/admin/administration')
         });
     } catch (e) {
         return response.status(400).json({

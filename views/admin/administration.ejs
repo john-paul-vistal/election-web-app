@@ -67,7 +67,7 @@
                     <div class="bg-white shadow rounded my-3 p-3" style="height: 800px;">
                         <p>ADMINISTRATION LIST</p>
                         <hr>
-                        <button class="btn btn-primary float-right px-5" style="border-radius:30px"><i class="fa fa-plus"></i> ADD</button>
+                        <a href="./admin-registration"> <button class="btn btn-primary float-right px-5" style="border-radius:30px"><i class="fa fa-plus"></i> ADD</button></a>
                         <label style="margin-left:10px" class="d-inline mt-3" for=""><i class="fa fa-search"></i></label>
                         <input class="search d-inline mt-3 py-2" type="text" placeholder="Search..." style="border:none;border-bottom:1px solid black;width: 50%;margin-left: -20px;">
                         <div class="mt-2 p-2" style="overflow:scroll;height:600px">
@@ -87,6 +87,7 @@
                                             <td>
                                                 <%=admin.lastname%>,
                                                     <%=admin.firstname%>
+                                                        <%=admin.middlename%>
                                             </td>
                                             <td>
                                                 <%=admin.email%>
@@ -98,8 +99,8 @@
                                                 <%=admin.contactNumber%>
                                             </td>
                                             <td>
-                                                <button class="btn btn-warning"><i class="fa fa-pencil"></i></button>
-                                                <button class="btn btn-danger"><i class="fa fa-trash"></i></button>
+                                                <button class="btn btn-warning"><i class="fa fa-eye"></i></button>
+                                                <a href="administration/delete/<%=admin._id%>"><button class="btn btn-danger"><i class="fa fa-trash"></i></button></a>
                                             </td>
                                         </tr>
                                         <% }); %>

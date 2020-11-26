@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=, initial-scale=1.0">
-    <title>Candidacy Form</title>
+    <title>Admin Registration Form</title>
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
     <link rel="stylesheet" href="../../public/css/voters.css">
@@ -14,122 +14,37 @@
 <body>
     <center>
         <div class="wrapper fadeInDown">
-            <div class="main shadow-lg p-5 mb-5 bg-white rounded">
-                <h3>Application for Candidacy</h3>
-                <h5>Fill out the identifying information<br>
-                    to eligibly apply for candidacy.</h5><br>
-
-                <form action="ewas.covid.edu/student_registration_form" method="POST" autocomplete="off">
-                    <div class="conatiner">
-                        <div class="float-left" style="margin-left: 13px"><i class="fa fa-user"> Personal
-                                Information</i></div><br>
-
-                        <div class="row">
-                            <div class="col input-group">
-                                <label for="lName"></label>
-                                <div class="input-group-prepend">
-                                    <input type="text" class="mt-n20 transparent" name="lName" placeholder="Last Name">
-                                </div>
-                            </div>
-
-                            <div class="col input-group">
-                                <label for="fName"></label>
-                                <div class="input-group-prepend">
-                                    <input type="text" class="mt-n20 transparent" name="fName" placeholder="First Name">
-                                </div>
-                            </div>
-
-                            <div class="col input-group">
-                                <label for="mName"></label>
-                                <div class="input-group-prepend">
-                                    <input type="text" class="mt-n20 transparent" name="mName"
-                                        placeholder="Middle Name">
-                                </div>
-                            </div>
+            <div class="mainCard shadow-lg p-5 mb-5 bg-white rounded mt-5">
+                <h3 class="mb-4">Administrator Registration Form</h3>
+                <hr>
+                <form action="./administration/registration/" method="POST" autocomplete="off">
+                    <div class="conatiner d-inline mb-3">
+                        <div class="form-group d-inline">
+                            <i class="fa fa-user"></i>
+                            <input style="width: 30%;" type="text" name="firstname" placeholder="First Name" required>
+                        </div>
+                        <div class="form-group d-inline ml-3">
+                            <input style="width: 30%;" type="text" name="lastname" placeholder="Last Name" required>
+                        </div>
+                        <div class="form-group d-inline ml-3">
+                            <input style="width: 30%;" type="text" name="middlename" placeholder="Middle Name" required>
                         </div>
                     </div>
 
                     <div class="conatiner"><br>
-                        <div class="float-left" style="margin-left: 13px"><i class="fa fa-address-book"> Address</i>
-                        </div><br>
+                        <div class="float-left" style="margin-left: 13px"><i class="fa fa-address-book"> Address</i></div><br>
                         <div class="row">
                             <div class="col">
-                                <label for="stAddress"></i></label>
-                                <input type="text" name="stAddress" placeholder="Street/Brgy">
+                                <input type="text" name="barangay" placeholder="Street/Brgy" required>
                             </div>
 
                             <div class="col">
-                                <label for="cityAddress"></label>
-                                <input type="text" name="cityAddress" placeholder="City/Municipality">
+                                <input type="text" name="municipality" placeholder="City/Municipality" required>
                             </div>
                         </div>
                     </div>
 
-                    <div class="conatiner">
-                        <div class="row">
-                            <div class="col">
-                                <label for="province"></i></label>
-                                <input type="text" name="province" placeholder="Province">
-                            </div>
-
-                            <div class="col">
-                                <label for="region"></label>
-                                <input type="text" name="region" placeholder="Region">
-                            </div>
-                        </div>
-                    </div><br>
-
-                    <div class="container">
-                        <div class="row">
-                            <div class="col-sm form-group">
-                                <label for="birthday"><i class="fa fa-birthday-cake"></i></label>
-                                <input type="date" name="birthday">
-                            </div>
-
-                            <div class="col-sm">
-                                <label for="gender"></label>
-                                <select class="form-control" id="gender">
-                                    <option>Female</option>
-                                    <option>Male</option>
-                                </select>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="form-group">
-                        <i class="fa fa-envelope"></i>
-                        <label for="email"></label>
-                        <input type="text" name="email" placeholder="Email Address">
-                    </div>
-
-                    <div class="container">
-                        <div class="row">
-                            <div class="row">
-                                <div class="col-sm">
-                                    <label for="yearLevel"></label>
-                                    <select class="form-control" id="yearLevel">
-                                        <option>Female</option>
-                                        <option>Male</option>
-                                    </select>
-                                </div>
-
-                                <div class="col-sm">
-                                    <label for="section"></label>
-                                    <input type="text" class="form-control" name="email" placeholder="Section">
-                                </div>
-
-                                <div class="col-sm">
-                                    <label for="schoolYear"></label>
-                                    <select class="form-control" id="schoolYear">
-                                        <option>Female</option>
-                                        <option>Male</option>
-                                    </select>
-                                </div>
-                            </div>
-                        </div>
-                        <br><br>
-
-                        <button type="submit" class="btn btn-primary" style="font-size:large;">Register</button>
+                    <button type="submit" class="btn btn-primary" style="font-size:large;border-radius: 30px;padding-left: 150px;padding-right: 150px;padding-top: 10px;padding-bottom: 10px;">Register</button>
                 </form>
             </div>
         </div>

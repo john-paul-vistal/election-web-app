@@ -1,4 +1,4 @@
-.row > .col > input {
+.row>.col>input {
     border: none;
     border-bottom: 1px solid #999;
 }
@@ -18,4 +18,17 @@
 
 .mt-n20 {
     margin-top: -20px !important;
+}
+
+.mainCard {
+    margin-top: 5%;
+    background-color: #ffffff;
+    width: 75%;
+    padding: 5%;
+}
+
+.form-control:focus {
+    border-color: none;
+    outline: 0;
+    box-shadow: none;
 }

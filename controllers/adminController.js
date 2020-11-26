@@ -11,6 +11,16 @@ const getMainPage = (request, response) => {
     }
 };
 
+const getAdminRegistration = (request, response) => {
+    try {
+        response.render("./admin/adminRegistrationForm")
+    } catch (e) {
+        return response.status(400).json({
+            error: e,
+        });
+    }
+};
+
 const getStudentRegistration = (request, response) => {
     try {
         response.render("./admin/studentRegistrationForm")
@@ -129,6 +139,7 @@ const updateStudent = async(request, response) => {
 };
 
 module.exports = {
+    getAdminRegistration,
     getMainPage,
     getStudents,
     addNewStudent,
