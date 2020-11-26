@@ -7,17 +7,13 @@ const CandidatesControllers = require("../controllers/candidateController");
 
 
 router.get("/dashboard", AdminControllers.getMainPage);
-<<<<<<< HEAD
-router.get("/", AdminControllers.getMainPage);
-=======
->>>>>>> 8b0e0a6107a97b7374867edc009c4f93bf1f398d
 router.get("/student-registration", AdminControllers.getStudentRegistration);
 router.get("/candidacy-form", AdminControllers.getCandidacyForm);
 
 
 // START ADMINISTRATION ROUTES
-router.post("/administration/registration/", RegistrationControllers.addAdmins);
-router.get("/administration/", RegistrationControllers.getAllAdmins);
+router.post("/administration/registration", RegistrationControllers.addAdmins);
+router.get("/administration", RegistrationControllers.getAllAdmins);
 router.get("/administration/:id", RegistrationControllers.getAdminById);
 router.put("/administration/:id", RegistrationControllers.modifyAdmin);
 router.delete("/administration/delete/:id", RegistrationControllers.deleteAdmin);
