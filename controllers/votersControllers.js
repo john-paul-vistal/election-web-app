@@ -18,6 +18,13 @@ const getAllVoters = async(request, response) => {
     }
 }
 
+function ageCalculator(date) {
+    var birth = new Date(date);
+    var curr = new Date();
+    var diff = curr.getTime() - birth.getTime();
+    return Math.floor(diff / (1000 * 60 * 60 * 24 * 365.25))
+}
+
 
 
 const addNewVoter = async(request, response) => {
@@ -35,6 +42,7 @@ const addNewVoter = async(request, response) => {
             province: request.body.province.toUpperCase(),
             region: request.body.region,
             birthdate: request.body.birthdate,
+            age: ageCalculator(request.body.birthdate),
             gender: request.body.gender,
             contact: request.body.contact,
             email: request.body.email

@@ -10,6 +10,7 @@ const votersSchema = mongoose.Schema({
     province: { type: String, required: true },
     region: { type: String, required: true },
     birthdate: { type: Date, required: true },
+    age: { type: Number, required: true },
     gender: { type: String, required: true },
     contact: { type: Number, required: true },
     email: { type: String, required: true }
