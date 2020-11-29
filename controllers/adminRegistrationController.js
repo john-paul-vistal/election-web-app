@@ -31,9 +31,7 @@ const getAdminById = async(request, response) => {
             });
         }
 
-        response.status(200).json({
-            admin: admin,
-        });
+        response.render("admin/adminFormUpdate", { admin: admin })
 
     } catch (e) {
         return response.status(400).json({
