@@ -43,3 +43,13 @@
     width: 50%;
     padding: 5%;
 }
+
+small {
+    color: white;
+    margin: 0 auto;
+}
+
+.input {
+    float: left;
+    width: 32%;
+}
