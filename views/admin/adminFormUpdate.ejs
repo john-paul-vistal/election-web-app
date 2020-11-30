@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=, initial-scale=1.0">
+    <title>Admin Registration Form</title>
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/public/css/voters.css">
+    <link rel="stylesheet" href="/public/css/form.css">
+</head>
+
+<body>
+    <center>
+        <div class="wrapper fadeInDown">
+            <div style="position: relative;" class="mainCard shadow-lg p-5 mb-5 bg-white rounded mt-5">
+                <a href="./"><button style="position: absolute;left:4px;top:4px" class="btn btn-secondary px-3"><i class="fa fa-arrow-left"></i></button></a>
+                <h3 class="mb-4 text-center">Administrator Registration Form</h3>
+                <hr>
+                <% admin.forEach(data=>{%>
+                    <form action="./administration/registration/" method="POST" autocomplete="off">
+                        <div class="conatiner d-inline mb-3">
+                            <div class="form-group d-inline">
+                                <i class="fa fa-user"></i>
+                                <input style="width: 30%;" type="text" name="firstname" placeholder="First Name" value="<%=data.firstname%>" required>
+                            </div>
+                            <div class="form-group d-inline ml-3">
+                                <input style="width: 30%;" type="text" name="lastname" placeholder="Last Name" value="<%=data.lastname%>" required>
+                            </div>
+                            <div class="form-group d-inline ml-3">
+                                <input style="width: 30%;" type="text" name="middlename" placeholder="Middle Name" value="<%=data.middlename%>" required>
+                            </div>
+                        </div>
+
+                        <div class="conatiner"><br>
+                            <div class="float-left" style="margin-left: 13px"><i class="fa fa-address-book"> Address</i></div><br>
+                            <div class="row">
+                                <div class="col">
+                                    <input type="text" name="barangay" placeholder="Street/Brgy" value="<%=data.street%>" required>
+                                </div>
+
+                                <div class="col">
+                                    <input type="text" name="municipality" placeholder="City/Municipality" value="<%=data.municipality%>" required>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="conatiner">
+                            <div class="row">
+                                <div class="col">
+                                    <input type="text" name="province" placeholder="Province" value="<%=data.province%>" required>
+                                </div>
+
+                                <div class="col">
+                                    <select class="form-control" id="region" name="region" style="margin-top: 17px;" required>
+                                    <option>...............</option>
+                                    <option value="PRESIDENT">I</option>
+                                    <option value="VICE-PRISEDENT">II</option>
+                                    <option value="TRASURER">III</option>
+                                    <option value="SECRETARY">IV-A</option>
+                                    <option value="SECRETARY">IV-B</option>
+                                    <option value="AUDITOR">V</option>
+                                    <option value="AUDITOR">CAR</option>
+                                    <option value="AUDITOR">NCR</option>
+                                    <option value="P.I.O">VI</option>
+                                    <option value="REPRESENTATIVE 7">VII</option>
+                                    <option value="REPRESENTATIVE 8">VII</option>
+                                    <option value="REPRESENTATIVE 9">IX</option>
+                                    <option value="REPRESENTATIVE 10">X</option>
+                                    <option value="REPRESENTATIVE 11">XI</option>
+                                    <option value="REPRESENTATIVE 12">XII</option>
+                                    <option value="REPRESENTATIVE 12">XIII</option>
+                                    <option value="REPRESENTATIVE 12">BARMM</option>
+                                </select>
+                                </div>
+                            </div>
+                        </div><br>
+                        <div class="container px-4">
+                            <div class="row">
+                                <div class="col-sm form-group">
+                                    <label for="birthday"><i class="fa fa-birthday-cake"></i></label>
+                                    <input type="date" name="birthDate" value="<%=data.birthDate%>" required>
+                                </div>
+
+                                <div class="col-sm">
+                                    <label for="gender"></label>
+                                    <select class="form-control" id="gender" name="gender" style="margin-top: 1px;" required>
+                                    <option>.......Gender.....</option>
+                                    <option value="FEMALE">Female</option>
+                                    <option value="MALE">Male</option>
+                                </select>
+                                </div>
+                                <div class="col-sm">
+                                    <label for="position"></label>
+                                    <select class="form-control" id="position" name="position" style="margin-top: 1px;" required>
+                                    <option>.......POSITION.......</option>
+                                    <option value="ADMIN">ADMIN</option>
+                                    <option value="REGISTRAR">REGISTRAR</option>
+                                </select>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="px-2 mb-2">
+                            <div class="row">
+                                <div class="col">
+                                    <div class="form-group d-inline">
+                                        <i class="fa fa-phone"></i>
+                                        <input type="text" name="contactNumber" placeholder="0000-000-0000" value="<%=data.contactNumber%>" required>
+                                    </div>
+                                </div>
+                                <div class="col">
+                                    <div class="form-group d-inline">
+                                        <i class="fa fa-envelope"></i>
+                                        <input type="email" name="email" placeholder="Email Address" value="<%=data.email%>" required>
+                                    </div>
+                                </div>
+                            </div>
+                            <br>
+                            <hr>
+                        </div>
+                        <button type="submit" class="btn btn-primary" style="font-size:large;border-radius: 30px;padding-left: 150px;padding-right: 150px;padding-top: 10px;padding-bottom: 10px;">Save Changes</button>
+                    </form>
+                    <%})%>
+            </div>
+        </div>
+    </center>
+</body>
+
+</html>
