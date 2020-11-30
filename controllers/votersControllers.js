@@ -18,6 +18,23 @@ const getAllVoters = async(request, response) => {
     }
 }
 
+const getVoterById = async(request, response) => {
+
+    try {
+        const voter = await Voters.find({ _id: request.params.id });
+        if (!voter) {
+            return response.status(400).json({
+                error: "Error in retrieving voter!",
+            });
+        }
+        response.render("./admin/votersFormUpdate", { voter: voter })
+    } catch (e) {
+        return response.status(400).json({
+            error: e + "",
+        });
+    }
+}
+
 function ageCalculator(date) {
     var birth = new Date(date);
     var curr = new Date();
@@ -90,9 +107,7 @@ const updateVoter = async(request, response) => {
             });
         }
 
-        response.status(200).json({
-            result: result,
-        });
+        response.redirect('/ewas.covid.edu/admin/voters')
     } catch (e) {
         return response.status(400).json({
             error: e,
@@ -102,6 +117,7 @@ const updateVoter = async(request, response) => {
 
 module.exports = {
     getAllVoters,
+    getVoterById,
     addNewVoter,
     deleteVoter,
     updateVoter

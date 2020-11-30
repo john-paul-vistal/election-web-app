@@ -1,3 +1,6 @@
+const { request } = require("express");
+const Admin = require("../models/admin.model");
+
 const getLogin = (request, response) => {
     try {
         response.render("./admin/login")
@@ -7,6 +10,16 @@ const getLogin = (request, response) => {
         });
     }
 };
+
+const loginValidation = async(request, response) => {
+    const admins = await Admin.find();
+    admins.forEach(admin => {
+        if (request.body.username == admin.username && request.body.password == admin.password) {
+            response.redirect("/dashboard")
+        }
+    })
+    response.redirect("/")
+}
 
 const getDashboard = (request, response) => {
     try {
@@ -54,5 +67,6 @@ module.exports = {
     getDashboard,
     getStudentRegistration,
     getCandidacyForm,
-    getLogin
+    getLogin,
+    loginValidation
 };

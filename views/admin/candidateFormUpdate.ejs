@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=, initial-scale=1.0">
+    <title>Admin Registration Form</title>
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/public/css/voters.css">
+    <link rel="stylesheet" href="/public/css/form.css">
+</head>
+
+<body>
+    <center>
+        <div class="wrapper fadeInDown">
+            <div style="position: relative;" class="mainCard shadow-lg p-5 mb-5 bg-white rounded mt-5">
+                <a href="../candidates"><button style="position: absolute;left:4px;top:4px" class="btn btn-secondary px-3"><i class="fa fa-arrow-left"></i></button></a>
+                <h3 class="mb-4">Candidate Registration Form</h3>
+                <hr>
+                <% candidate.forEach(data=>{%>
+                    <form action="./<%=data._id%>" method="POST" autocomplete="off">
+                        <div class="float-left" style="margin-left: 13px"><i class="fa fa-user"> Personal Info</i></div><br>
+                        <div class="conatiner mb-5">
+                            <div class="form-group d-inline">
+                                <input style="width: 30%;" type="text" name="firstname" placeholder="First Name" value="<%=data.firstname%>" required>
+                            </div>
+                            <div class="form-group d-inline ml-3">
+                                <input style="width: 30%;" type="text" name="lastname" placeholder="Last Name" value="<%=data.lastname%>" required>
+                            </div>
+                            <div class="form-group d-inline ml-3">
+                                <input style="width: 30%;" type="text" name="middlename" placeholder="Middle Name" value="<%=data.middlename%>" required>
+                            </div>
+                        </div>
+                        <hr>
+                        <div class="float-left" style="margin-left: 13px"><i class="fa fa-user"> Candidacy Info</i></div><br>
+                        <div class="conatiner px-3">
+                            <div class="row">
+                                <div class="col-sm-5 form-group">
+                                    <label for="birthday"><i class="fa fa-id-card"></i></label>
+                                    <input type="text" name="id" placeholder="ID Number...." value="<%=data.id%>" readonly>
+                                </div>
+
+                                <div class="col-sm">
+                                    <label for="gender" class="fa fa-award float-left"> Position</label>
+                                    <select class="form-control" id="gender" name="position" required>
+                                    <%
+                                    var options = [ "PRESIDENT", "VICE-PRESIDENT", "TRASURER","SECRETARY", "AUDITOR", "P.I.O", "REPRESENTATIVE 7", "REPRESENTATIVE 8", "REPRESENTATIVE 9", "REPRESENTATIVE 10", "REPRESENTATIVE 11", "REPRESENTATIVE 12"];
+                                    for ( var i = 0; i < options.length; i++ )
+                                    {
+                                        var selected = ( data.position == options[i]) ? "selected" : "";
+                                        %><option value="<%=options[i] %>" <%=selected %>><%=options[i]%></option><%
+                                    }
+                                    %>
+                                </select>
+                                </div>
+                            </div>
+                        </div>
+                        <button type="submit" class="btn btn-primary mt-5" style="font-size:large;border-radius: 30px;padding-left: 150px;padding-right: 150px;padding-top: 10px;padding-bottom: 10px;">SAVE CHANGES</button>
+                    </form>
+                    <% }); %>
+            </div>
+        </div>
+    </center>
+</body>
+
+</html>

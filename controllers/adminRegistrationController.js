@@ -104,9 +104,7 @@ const modifyAdmin = async(request, response) => {
             });
         }
 
-        response.status(200).json({
-            message: "Admin Updated Successfully",
-        });
+        response.redirect("/ewas.covid.edu/admin/administration")
 
     } catch (e) {
         return response.status(400).json({

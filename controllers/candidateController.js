@@ -29,9 +29,7 @@ const getCandidateById = async(request, response) => {
             });
         }
 
-        response.status(200).json({
-            candidate: candidate,
-        });
+        response.render("admin/candidateFormUpdate", { candidate: candidate })
 
     } catch (e) {
         return response.status(400).json({
@@ -78,9 +76,7 @@ const modifyCandidate = async(request, response) => {
             });
         }
 
-        response.status(200).json({
-            message: "Candidate Updated Successfully",
-        });
+        response.redirect("/ewas.covid.edu/admin/candidates")
 
     } catch (e) {
         return response.status(400).json({
