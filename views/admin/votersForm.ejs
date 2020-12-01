@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=, initial-scale=1.0">
+    <title>Admin Registration Form</title>
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../../public/css/voters.css">
+    <link rel="stylesheet" href="../../public/css/form.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="../../public/js/studentRegistration.js"></script>
+</head>
+<style>
+    small {
+        color: white;
+        margin: 0 auto;
+    }
+    
+    .input {
+        float: left;
+        width: 32%;
+    }
+</style>
+
+<body>
+    <center>
+        <div class="wrapper fadeInDown">
+            <div style="position: relative;" class="mainCard shadow-lg p-5 mb-5 bg-white rounded mt-5">
+                <a href="voters"><button style="position: absolute;left:4px;top:4px" class="btn btn-secondary px-3"><i class="fa fa-arrow-left"></i></button></a>
+                <h3 class="mb-4">Voters Registration Form</h3>
+                <hr>
+                <form action="voter/registration" method="POST" autocomplete="off">
+                    <div class="conatiner d-inline mb-3">
+                        <div class="input">
+                            <div class="form-group">
+                                <i class="fa fa-user"></i>
+                                <input style="width: 80%;" type="text" class="name" id="fname" name="firstname" placeholder="First Name" required>
+                            </div>
+                            <small id="efname">.</small>
+                        </div>
+                        <div class="input">
+                            <div class="form-group ml-3">
+                                <input style="width: 90%;" type="text" class="name" id="lname" name="lastname" placeholder="Last Name" required>
+                            </div>
+                            <small id="elname">.</small>
+                        </div>
+                        <div class="input">
+                            <div class="form-group ml-3">
+                                <input style="width: 90%;" type="text" class="name" id="mname" name="middlename" placeholder="Middle Name" required>
+                            </div>
+                            <small id="emname">.</small>
+                        </div>
+                    </div>
+
+                    <div class="conatiner">
+                        <div style="margin-left: 13px;text-align: left;"><i class="fa fa-address-book"> Address</i>
+                        </div>
+                        <div class="row">
+                            <div class="col">
+                                <input type="text" name="barangay" placeholder="Street/Brgy" required>
+                            </div>
+
+                            <div class="col">
+                                <input type="text" name="municipality" placeholder="City/Municipality" required>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="conatiner">
+                        <div class="row">
+                            <div class="col">
+                                <input type="text" name="province" placeholder="Province" required>
+                            </div>
+                            <div class="col">
+                                <select class="form-control" id="region" name="region" style="margin-top: 17px;" required>
+                                    <option value="">.......REGION........</option>
+                                    <option value="I">I</option>
+                                    <option value="II">II</option>
+                                    <option value="III">III</option>
+                                    <option value="IV-A">IV-A</option>
+                                    <option value="IV-B">IV-B</option>
+                                    <option value="V">V</option>
+                                    <option value="CAR">CAR</option>
+                                    <option value="NCR">NCR</option>
+                                    <option value="VI">VI</option>
+                                    <option value="VII">VII</option>
+                                    <option value="VIII">VIII</option>
+                                    <option value="IX">IX</option>
+                                    <option value="X">X</option>
+                                    <option value="XI">XI</option>
+                                    <option value="XII">XII</option>
+                                    <option value="XIII">XIII</option>
+                                    <option value="BARMM">BARMM</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div><br>
+                    <div class="container px-4">
+                        <div class="row">
+                            <div class="col-sm form-group">
+                                <label for="birthday"><i class="fa fa-birthday-cake"></i></label>
+                                <input type="date" name="birthdate" required>
+                            </div>
+                            <div class="col-sm">
+                                <label for="gender"></label>
+                                <select class="form-control" id="gender" name="gender" style="margin-top: 1px;" required>
+                                    <option value="">....Gender...</option>
+                                    <option value="FEMALE">Female</option>
+                                    <option value="MALE">Male</option>
+                                </select>
+                            </div>
+                            <div class="col-sm">
+                                <label for="gender"></label>
+                                <select class="form-control" id="gradelevel" name="gradelevel" style="margin-top: 1px;" required>
+                                    <option value="">....Grade Level...</option>
+                                    <option value="7">7</option>
+                                    <option value="8">8</option>
+                                    <option value="9">9</option>
+                                    <option value="10">10</option>
+                                    <option value="11">11</option>
+                                    <option value="12">12</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="px-2">
+                        <div class="row">
+                            <div class="col">
+                                <div class="form-group d-inline">
+                                    <i class="fa fa-phone"></i>
+                                    <input type="text" id="contact" name="contact" placeholder="0000-000-0000" required>
+                                </div>
+                                <small id="econtact">.</small>
+                            </div>
+                            <div class="col">
+                                <div class="form-group d-inline">
+                                    <i class="fa fa-envelope"></i>
+                                    <input type="email" id="email" name="email" placeholder="Email Address" required>
+                                </div>
+                                <small id="error">.</small>
+                            </div>
+                        </div>
+                        <br>
+                    </div>
+                    <hr>
+                    <button type="submit" id="submit" class="btn btn-primary" style="font-size:large;border-radius: 30px;padding-left: 150px;padding-right: 150px;padding-top: 10px;padding-bottom: 10px;">Register</button>
+            </div>
+            </form>
+        </div>
+        </div>
+    </center>
+    <input type="hidden" id="validate" name="validate" value="5">
+</body>
+
+</html>
