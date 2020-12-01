@@ -9,33 +9,51 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
     <link rel="stylesheet" href="../../public/css/voters.css">
     <link rel="stylesheet" href="../../public/css/form.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="../../public/js/studentRegistration.js"></script>
 </head>
 
 <body>
     <center>
         <div class="wrapper fadeInDown">
             <div style="position: relative;" class="mainCard shadow-lg p-5 mb-5 bg-white rounded mt-5">
-                <a href="candidates"><button style="position: absolute;left:4px;top:4px" class="btn btn-secondary px-3"><i class="fa fa-arrow-left"></i></button></a>
+                <a href="candidates"><button style="position: absolute;left:4px;top:4px"
+                        class="btn btn-secondary px-3"><i class="fa fa-arrow-left"></i></button></a>
                 <h3 class="mb-4">Candidate Registration Form</h3>
                 <hr>
                 <form action="candidate/registration" method="POST" autocomplete="off">
                     <div class="float-left" style="margin-left: 13px"><i class="fa fa-user"> Personal Info</i></div><br>
                     <div class="conatiner mb-5">
-                        <div class="form-group d-inline">
-                            <input style="width: 30%;" type="text" name="firstname" placeholder="First Name" required>
+                        <div class="input">
+                            <div class="form-group d-inline">
+                                <input style="width: 100%;" type="text" name="firstname" id="fname"
+                                    placeholder="First Name" required>
+                            </div>
+                            <small id="efname">.</small>
                         </div>
-                        <div class="form-group d-inline ml-3">
-                            <input style="width: 30%;" type="text" name="lastname" placeholder="Last Name" required>
+                        <div class="input">
+                            <div class="form-group d-inline ml-3">
+
+                                <input style="width: 100%;" type="text" name="lastname" id="lname"
+                                    placeholder="Last Name" required>
+                            </div>
+                            <small id="elname">.</small>
                         </div>
-                        <div class="form-group d-inline ml-3">
-                            <input style="width: 30%;" type="text" name="middlename" placeholder="Middle Name" required>
+                        <div class="input">
+                        <div class="form-group d-inline ml-4">
+                            <input style="width: 100%;" type="text" name="middlename" id="mname"
+                                placeholder="Middle Name" required>
                         </div>
+                        <small id="emname">.</small>
                     </div>
-                    <hr>
-                    <div class="float-left" style="margin-left: 13px"><i class="fa fa-user"> Candidacy Info</i></div><br>
+                    </div>
+                    <br>
+                    
+                    <div class="float-left" style="margin-top: 2%;"><i class="fa fa-user"> Candidacy Info</i></div>
+                    <br><hr>
                     <div class="conatiner px-3">
                         <div class="row">
-                            <div class="col-sm-5 form-group">
+                            <div class="col-sm-5 form-group" style="margin-left: -20%;">
                                 <label for="birthday"><i class="fa fa-id-card"></i></label>
                                 <input type="text" name="id" placeholder="ID Number...." required>
                             </div>
@@ -46,7 +64,7 @@
                                     <option>...............</option>
                                     <option value="PRESIDENT">PRESIDENT</option>
                                     <option value="VICE-PRISEDENT">VICE-PRESIDENT</option>
-                                    <option value="TRASURER">TRASURER</option>
+                                    <option value="TRASURER">TREASURER</option>
                                     <option value="SECRETARY">SECRETARY</option>
                                     <option value="AUDITOR">AUDITOR</option>
                                     <option value="P.I.O">P.I.O</option>
@@ -60,7 +78,9 @@
                             </div>
                         </div>
                     </div>
-                    <button type="submit" class="btn btn-primary mt-5" style="font-size:large;border-radius: 30px;padding-left: 150px;padding-right: 150px;padding-top: 10px;padding-bottom: 10px;">Register</button>
+                    <input type="hidden" id="validate" name="validate" value="3">
+                    <button type="submit" id="submit" class="btn btn-primary mt-5"
+                        style="font-size:large;border-radius: 30px;padding-left: 150px;padding-right: 150px;padding-top: 10px;padding-bottom: 10px;">Register</button>
                 </form>
             </div>
         </div>

@@ -24,13 +24,14 @@
                     <img src="../public/img/pro.png" id="icon" alt="User Icon" />
                 </div>
 
-                <form action="./voting_form" method="GET" autocomplete="off">
+                <form action="/ewas.covid.edu" method="POST" autocomplete="off">
                     <div class="form-group">
                         <label for="email">
                             <i class="fa fa-key"></i>
                         </label>&nbsp;&nbsp;
-                        <input type="text" name="id" placeholder="Enter your id ...">
+                        <input type="number" name="id" placeholder="Enter your id ..." required>
                     </div>
+                    <small class="float-left" style="color: red;"><%= error %></small><br>
                     <button type="submit" class="btn btn-primary" style="font-size:large;">Start Voting</button>
                 </form>
             </div>
