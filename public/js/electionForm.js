@@ -1,7 +1,18 @@
 $(document).ready(() => {
     $(".checkPresident").on("click", event => vote(".checkPresident",event,1));
     $(".checkVice").on("click", event => vote(".checkVice", event, 1));
-    $(".checkSecretary").on("click", event => vote(".checkSecretary", event, 2));
+    $(".checkAudit").on("click", event => vote(".checkAudit", event, 1));
+    $(".checkSecretary").on("click", event => vote(".checkSecretary", event, 1));
+    $(".checkTreasurer").on("click", event => vote(".checkTreasurer", event, 1));
+    $(".checkPIO").on("click", event => vote(".checkPIO", event, 1));
+    $(".checkSeven").on("click", event => vote(".checkSeven", event, 1));
+    $(".checkEight").on("click", event => vote(".checkEight", event, 1));
+    $(".checkNine").on("click", event => vote(".checkNine", event, 1));
+    $(".checkTen").on("click", event => vote(".checkTen", event, 1));
+    $(".checkEleven").on("click", event => vote(".checkEleven", event, 1));
+    $(".checkTwelve").on("click", event => vote(".checkTwelve", event, 1));
+
+    
     let arr = [];
 
     vote = (roleClass,event,limit) => {
@@ -22,4 +33,21 @@ $(document).ready(() => {
             $(roleClass).removeAttr("disabled")
         }            
     }
+
+$('#submit').click(()=>{
+    $.ajax({
+        type: "POST",
+        url: "/ewas.covid.edu/submit",
+        data: {votes:arr},
+        // dataType: "dataType",
+        success: function (response) {
+            console.log(response.response)
+        },
+        error: (doc,textStatus,err)=>{
+            alert('text status '+textStatus+', err '+err)
+        }
+    });
+})
+
+
 });

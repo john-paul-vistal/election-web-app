@@ -5,7 +5,10 @@ const ElectionController = require("../controllers/electionController");
 
 router.get("/", ElectionController.logInPage);
 
-router.post('/voting_form', ElectionController.electionForm);
+router.post('/', ElectionController.validate)
 
+router.get('/voting_form', ElectionController.electionForm);
+
+router.post('/submit', ElectionController.submit)
 
 module.exports = router;

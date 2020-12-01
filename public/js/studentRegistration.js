@@ -10,9 +10,9 @@ $(document).ready(() => {
                 count++;
             }
         }
-        // console.log(count)
-        if (count == 5) {
-            // console.log("Ok na!")
+        // console.log($('#validate').val())
+        if (count == $('#validate').val()) {
+            console.log("Ok na!")
             $('#submit').attr('disabled', false)
         } else {
             $('#submit').attr('disabled', true)
