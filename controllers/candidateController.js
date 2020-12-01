@@ -1,8 +1,10 @@
 const Candidate = require("../models/candidate.model");
+const Admin = require("../models/admin.model");
 const parseRequestBody = require("../utilities/parseRequestBody");
 
 const getAllCandidate = async(request, response) => {
     try {
+        const adminUser = await Admin.findOne({ _id: request.user.id })
         const candidates = await Candidate.find();
         if (!candidates) {
             return response.status(400).json({
@@ -10,7 +12,13 @@ const getAllCandidate = async(request, response) => {
             });
         }
 
-        response.render("./admin/candidates", { candidates: candidates })
+        response.render("./admin/candidates", {
+            candidates: candidates,
+            id: request.user.id,
+            fullname: request.user.fullName,
+            email: adminUser.email,
+            position: adminUser.position
+        })
 
     } catch (e) {
         return response.status(400).json({

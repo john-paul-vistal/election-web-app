@@ -1,5 +1,6 @@
 const express = require("express");
 const bodyParser = require("body-parser");
+const cookieParser = require('cookie-parser')
 const app = express();
 const port = 8002
 
@@ -8,7 +9,11 @@ const database = require("./services/database");
 const ElectionSystemAdminRoutes = require("./routes/adminRoute");
 const ElectionSystemElectionRoutes = require("./routes/electionRoute");
 
+require("dotenv").config();
+
 app.use(bodyParser.urlencoded({ extended: true }))
+
+app.use(cookieParser())
 
 app.use('/public', express.static('public'));
 

@@ -31,7 +31,7 @@
 
                 <h3 class="mb-5" style="font-weight: bold;">WELCOME, Admin!</h3>
 
-                <form action="admin/login" method="POST" autocomplete="off" style="font-family: Georgia, 'Times New Roman', Times, serif;">
+                <form action="/ewas.covid.edu/admin/login" method="POST" autocomplete="off" style="font-family: Georgia, 'Times New Roman', Times, serif;">
                     <div class="form-group">
                         <i class="fa fa-user-check"></i>
                         <label for="email"></label>
@@ -43,8 +43,11 @@
                         <label for="password"></label>
                         <input type="password" name="password" placeholder="Password">
                     </div><br>
+                    <p class="text-center text-danger">
+                        <%=error%>
+                    </p>
 
-                    <button type="submit" class="btn btn-primary" style="font-size:large;">Login</button>
+                    <button type="submit" class="btn btn-primary" style="font-size:large;padding-left: 150px;padding-right: 150px;border-radius: 30px;">Login</button>
 
 
                     <div class="mt-4" style="font-style: italic; font: 10px;">

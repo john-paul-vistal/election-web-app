@@ -1,16 +1,24 @@
 const Voters = require("../models/voters.model");
+const Admin = require("../models/admin.model");
 const parseRequestBody = require("../utilities/parseRequestBody");
 
 const getAllVoters = async(request, response) => {
 
     try {
+        const adminUser = await Admin.findOne({ _id: request.user.id })
         const voters = await Voters.find();
         if (!voters) {
             return response.status(400).json({
                 error: "Error in retrieving voters!",
             });
         }
-        response.render("./admin/voters", { voters: voters })
+        response.render("./admin/voters", {
+            voters: voters,
+            id: request.user.id,
+            fullname: request.user.fullName,
+            email: adminUser.email,
+            position: adminUser.position
+        })
     } catch (e) {
         return response.status(400).json({
             error: e + "",
@@ -48,7 +56,6 @@ const addNewVoter = async(request, response) => {
     try {
         const id = await Voters.find();
         const lastId = (id.length > 0) ? id[id.length - 1].votersId : 100000;
-        console.log(id)
         const votersInfo = new Voters({
             votersId: lastId + 1,
             firstname: request.body.firstname.toUpperCase(),
@@ -62,7 +69,8 @@ const addNewVoter = async(request, response) => {
             age: ageCalculator(request.body.birthdate),
             gender: request.body.gender,
             contact: request.body.contact,
-            email: request.body.email
+            email: request.body.email,
+            gradelevel: request.body.gradelevel
         })
         const result = await votersInfo.save();
         if (!result) {

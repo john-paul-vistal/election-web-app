@@ -9,7 +9,7 @@ const VotersControllers = require("../controllers/votersControllers");
 
 router.get("/", AdminControllers.getLogin);
 router.post("/login", AdminControllers.loginValidation);
-router.get("/dashboard", AdminControllers.getDashboard);
+router.get("/dashboard", AdminControllers.validateToken, AdminControllers.getDashboard);
 router.get("/admin-registration-form", AdminControllers.getAdminRegistration);
 router.get("/voters-registration-form", AdminControllers.getStudentRegistration);
 router.get("/candidate-registration-form", AdminControllers.getCandidacyForm);
@@ -17,7 +17,7 @@ router.get("/candidate-registration-form", AdminControllers.getCandidacyForm);
 
 // START ADMINISTRATION ROUTES
 router.post("/administration/registration", RegistrationControllers.addAdmins);
-router.get("/administration", RegistrationControllers.getAllAdmins);
+router.get("/administration", AdminControllers.validateToken, RegistrationControllers.getAllAdmins);
 router.get("/administration/:id", RegistrationControllers.getAdminById);
 router.post("/administration/:id", RegistrationControllers.modifyAdmin);
 router.get("/administration/delete/:id", RegistrationControllers.deleteAdmin);
@@ -25,7 +25,7 @@ router.get("/administration/delete/:id", RegistrationControllers.deleteAdmin);
 
 //START CANDIDATE ROUTES
 router.post("/candidate/registration", CandidatesControllers.addCandidate)
-router.get("/candidates", CandidatesControllers.getAllCandidate)
+router.get("/candidates", AdminControllers.validateToken, CandidatesControllers.getAllCandidate)
 router.get("/candidate/:id", CandidatesControllers.getCandidateById)
 router.post("/candidate/:id", CandidatesControllers.modifyCandidate)
 router.get("/candidate/delete/:id", CandidatesControllers.deleteCandidate)
@@ -33,7 +33,7 @@ router.get("/candidate/delete/:id", CandidatesControllers.deleteCandidate)
 
 //START VOTER ROUTES
 router.post('/voter/registration', VotersControllers.addNewVoter);
-router.get('/voters', VotersControllers.getAllVoters);
+router.get('/voters', AdminControllers.validateToken, VotersControllers.getAllVoters);
 router.get('/voter/:id', VotersControllers.getVoterById);
 router.post('/voter/:id', VotersControllers.updateVoter);
 router.get('/voter/delete/:id', VotersControllers.deleteVoter);
