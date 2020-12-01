@@ -13,7 +13,8 @@ const votersSchema = mongoose.Schema({
     age: { type: Number, required: true },
     gender: { type: String, required: true },
     contact: { type: Number, required: true },
-    email: { type: String, required: true }
+    email: { type: String, required: true },
+    gradelevel: { type: Number, required: true }
 })
 
 module.exports = mongoose.model('Voters', votersSchema, 'voters');

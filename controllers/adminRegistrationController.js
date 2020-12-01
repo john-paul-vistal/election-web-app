@@ -3,6 +3,7 @@ const parseRequestBody = require("../utilities/parseRequestBody");
 
 const getAllAdmins = async(request, response) => {
     try {
+        const adminUser = await Admin.findOne({ _id: request.user.id })
         const admins = await Admin.find();
         if (!admins) {
             return response.status(400).json({
@@ -11,7 +12,11 @@ const getAllAdmins = async(request, response) => {
         }
 
         response.render("admin/administration", {
-            admins: admins
+            admins: admins,
+            id: request.user.id,
+            fullname: request.user.fullName,
+            email: adminUser.email,
+            position: adminUser.position
         })
 
     } catch (e) {
@@ -47,15 +52,17 @@ function ageCalculator(date) {
     return Math.floor(diff / (1000 * 60 * 60 * 24 * 365.25))
 }
 
-function userNameGenerator(fname, lname) {
-    return fname.toLowerCase()[0] + lname.toLowerCase()
+function userNameGenerator(fname, bdate, lname) {
+    let date = new Date(bdate)
+    return fname.toLowerCase()[0] + lname.toLowerCase() + date.getFullYear()
 }
 
-function passwordGenerator(fname, lname) {
-    let random = Math.floor(Math.random() * (9999 - 1000 + 1)) + 1000
-    return fname.toLowerCase()[0] + lname.toLowerCase() + random;
+function passwordGenerator(bdate) {
+    let date = new Date(bdate)
+    var day = ("0" + date.getDate()).slice(-2);
+    var month = ("0" + (date.getMonth() + 1)).slice(-2);
+    return month + day + date.getFullYear()
 }
-
 
 const addAdmins = async(request, response) => {
     try {
@@ -73,8 +80,8 @@ const addAdmins = async(request, response) => {
             province: request.body.province.toUpperCase(),
             region: request.body.region,
             contactNumber: request.body.contactNumber,
-            username: userNameGenerator(request.body.firstname, request.body.lastname),
-            password: passwordGenerator(request.body.firstname, request.body.lastname),
+            username: userNameGenerator(request.body.firstname, request.body.birthDate, request.body.lastname),
+            password: passwordGenerator(request.body.birthDate),
         });
 
         const result = await newAdmin.save();
