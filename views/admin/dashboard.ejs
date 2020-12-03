@@ -81,7 +81,7 @@
                     </div>
                     <div class="row mt-2">
                         <div class="col-md-3">
-                            <div class="card border-info mx-sm-1 p-3 mt-4">
+                            <div class="card border-info mx-sm-1 p-3 mt-4 shadow">
                                 <div class="card border-info shadow text-info p-3 dash-card"><span class="fa fa-users" aria-hidden="true"></span></div>
                                 <div class="text-info text-center mt-3 rounded-circle">
                                     <h4>VOTERS</h4>
@@ -94,7 +94,7 @@
                             </div>
                         </div>
                         <div class="col-md-3">
-                            <div class="card border-success mx-sm-1 p-3 mt-4">
+                            <div class="card border-success mx-sm-1 p-3 mt-4 shadow">
                                 <div class="card border-success shadow text-success p-3 dash-card"><span class="fa fa-user-check" aria-hidden="true"></span></div>
                                 <div class="text-success text-center mt-3">
                                     <h4>CANDIDATES</h4>
@@ -107,7 +107,7 @@
                             </div>
                         </div>
                         <div class="col-md-3">
-                            <div class="card border-danger mx-sm-1 p-3 mt-4">
+                            <div class="card border-danger mx-sm-1 p-3 mt-4 shadow">
                                 <div class="card border-danger shadow text-danger p-3 dash-card"><span class="fa fa-users-cog" aria-hidden="true"></span></div>
                                 <div class="text-danger text-center mt-3">
                                     <h4>ADMINS</h4>
@@ -120,7 +120,7 @@
                             </div>
                         </div>
                         <div class="col-md-3">
-                            <div class="card border-warning mx-sm-1 p-3 mt-4">
+                            <div class="card border-warning mx-sm-1 p-3 mt-4 shadow">
                                 <div class="card border-warning shadow text-warning p-3 dash-card"><span class="fa fa-inbox" aria-hidden="true"></span></div>
                                 <div class="text-warning text-center mt-3">
                                     <h4>VOTES</h4>
@@ -137,86 +137,122 @@
                         <h5>ELECTION STATISTICS</h5>
                         <hr>
                         <div class="container py-2" style="overflow:scroll;height: 450px;">
-                            <div class="chart-container" style="position: relative; height:135px;">
+                            <div id="president" class="chart-container" style="position: relative; height:110px;">
                                 <p style="line-height: 2px;">PRESIDENT</p>
                                 <canvas id="myChart"></canvas>
                             </div>
-                            <hr />
-                            <div class="chart-container" style="position: relative; height:135px;">
+                            <hr/>
+                            <div class="chart-container" style="position: relative; height:110px;">
                                 <p style="line-height: 2px;">VICE-PRESIDENT</p>
                                 <canvas id="myChart2"></canvas>
                             </div>
-                            <hr />
-                            <div class="chart-container" style="position: relative; height:135px;">
+                            <hr/>
+                            <div class="chart-container" style="position: relative; height:110px;">
                                 <p style="line-height: 2px;">SECRETARY</p>
                                 <canvas id="myChart3"></canvas>
+                            </div>
+                            <hr/>
+                            <div class="chart-container" style="position: relative; height:110px;">
+                                <p style="line-height: 2px;">TREASURER</p>
+                                <canvas id="myChart4"></canvas>
+                            </div>
+                            <hr/>
+                            <div class="chart-container" style="position: relative; height:110px;">
+                                <p style="line-height: 2px;">AUDITOR</p>
+                                <canvas id="myChart5"></canvas>
+                            </div>
+                            <hr/>
+                            <div class="chart-container" style="position: relative; height:110px;">
+                                <p style="line-height: 2px;">PIO</p>
+                                <canvas id="myChart6"></canvas>
+                            </div>
+                            <hr/>
+                            <div class="chart-container" style="position: relative; height:110px;">
+                                <p style="line-height: 2px;">GRADE 7 REPRESENTATIVE</p>
+                                <canvas id="myChart7"></canvas>
+                            </div>
+                            <hr/>
+                            <div class="chart-container" style="position: relative; height:110px;">
+                                <p style="line-height: 2px;">GRADE 8 REPRESENTATIVE</p>
+                                <canvas id="myChart8"></canvas>
+                            </div>
+                            <hr/>
+                            <div class="chart-container" style="position: relative; height:110px;">
+                                <p style="line-height: 2px;">GRADE 9 REPRESENTATIVE</p>
+                                <canvas id="myChart9"></canvas>
+                            </div>
+                            <hr/>
+                            <div class="chart-container" style="position: relative; height:110px;">
+                                <p style="line-height: 2px;">GRADE 10 REPRESENTATIVE</p>
+                                <canvas id="myChart10"></canvas>
+                            </div>
+                            <hr/>
+                            <div class="chart-container" style="position: relative; height:110px;">
+                                <p style="line-height: 2px;">GRADE 11 REPRESENTATIVE</p>
+                                <canvas id="myChart11"></canvas>
+                            </div>
+                            <hr/>
+                            <div class="chart-container" style="position: relative; height:110px;">
+                                <p style="line-height: 2px;">GRADE 12 REPRESENTATIVE</p>
+                                <canvas id="myChart12"></canvas>
                             </div>
                         </div>
                     </div>
                     <div class="bg-white p-3 mb-3">
                         <h5>VOTERS COUNT</h5>
                         <hr>
-                        <div class="row">
-                            <div class="col">
-                                <div class="bg-white shadow rounded my-3 p-3" style="height: 400px;">
+                        <div class="bg-white shadow rounded my-3 p-3" style="height: 500px;">
+                            <canvas id="votersCount"></canvas>
+                        </div>
+                        <div class="bg-white shadow rounded my-3 p-3" style="height: 400px;">
+                            <p>LIST OF STUDENT NOT YET VOTED</p>
+                            <hr>
 
-                                    <div class="chart-container" style="position: relative; height:135px;margin-top: 50px;">
-                                        <canvas id="votersCount"></canvas>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col">
-                                <div class="bg-white shadow rounded my-3 p-3" style="height: 400px;">
-                                    <p>LIST OF STUDENT NOT YET VOTED</p>
-                                    <hr>
+                            <label class="d-inline" for=""><i class="fa fa-search"></i></label>
+                            <input class="search d-inline" type="text" class="form-control" placeholder="Search..." style="border:none;border-bottom:1px solid black">
 
-                                    <label class="d-inline" for=""><i class="fa fa-search"></i></label>
-                                    <input class="search d-inline" type="text" class="form-control" placeholder="Search..." style="border:none;border-bottom:1px solid black">
-
-                                    <div class="mt-2" style="overflow:scroll;height:265px">
-                                        <table id="header-fixed" class="table table-striped">
-                                            <thead style="position: sticky;top:0">
-                                                <tr>
-                                                    <th scope="col">ID</th>
-                                                    <th scope="col">First Name</th>
-                                                    <th scope="col">Last Name</th>
-                                                </tr>
-                                            </thead>
-                                            <tbody>
-                                                <tr>
-                                                    <td scope="row">101</td>
-                                                    <td>Mark</td>
-                                                    <td>Otto</td>
-                                                </tr>
-                                                <tr>
-                                                    <td scope="row">1</td>
-                                                    <td>Mark</td>
-                                                    <td>Otto</td>
-                                                </tr>
-                                                <tr>
-                                                    <td scope="row">1</td>
-                                                    <td>Mark</td>
-                                                    <td>Otto</td>
-                                                </tr>
-                                                <tr>
-                                                    <th scope="row">1</th>
-                                                    <td>Mark</td>
-                                                    <td>Otto</td>
-                                                </tr>
-                                                <tr>
-                                                    <td scope="row">1</td>
-                                                    <td>Mark</td>
-                                                    <td>Otto</td>
-                                                </tr>
-                                                <tr>
-                                                    <td scope="row">1</td>
-                                                    <td>Mark</td>
-                                                    <td>Otto</td>
-                                                </tr>
-                                            </tbody>
-                                        </table>
-                                    </div>
-                                </div>
+                            <div class="mt-2" style="overflow:scroll;height:265px">
+                                <table id="header-fixed" class="table table-striped">
+                                    <thead style="position: sticky;top:0">
+                                        <tr>
+                                            <th scope="col">ID</th>
+                                            <th scope="col">First Name</th>
+                                            <th scope="col">Last Name</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td scope="row">101</td>
+                                            <td>Mark</td>
+                                            <td>Otto</td>
+                                        </tr>
+                                        <tr>
+                                            <td scope="row">1</td>
+                                            <td>Mark</td>
+                                            <td>Otto</td>
+                                        </tr>
+                                        <tr>
+                                            <td scope="row">1</td>
+                                            <td>Mark</td>
+                                            <td>Otto</td>
+                                        </tr>
+                                        <tr>
+                                            <th scope="row">1</th>
+                                            <td>Mark</td>
+                                            <td>Otto</td>
+                                        </tr>
+                                        <tr>
+                                            <td scope="row">1</td>
+                                            <td>Mark</td>
+                                            <td>Otto</td>
+                                        </tr>
+                                        <tr>
+                                            <td scope="row">1</td>
+                                            <td>Mark</td>
+                                            <td>Otto</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
                             </div>
                         </div>
                     </div>

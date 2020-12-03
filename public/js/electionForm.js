@@ -1,4 +1,16 @@
 $(document).ready(() => {
+
+    $('#submit').attr("disabled", true);
+
+    gradeRep = (level) => {
+        for(let i=7; i<=12; i++){
+            $("#"+i).hide();
+        }
+        $('#'+level).show();
+    }
+
+    gradeRep($('#grade').val())
+
     $(".checkPresident").on("click", event => vote(".checkPresident",event,1));
     $(".checkVice").on("click", event => vote(".checkVice", event, 1));
     $(".checkAudit").on("click", event => vote(".checkAudit", event, 1));
@@ -31,23 +43,31 @@ $(document).ready(() => {
             $(roleClass).parent().parent().parent().removeClass("box")
             $(roleClass).parent().parent().parent().addClass("shadow")
             $(roleClass).removeAttr("disabled")
-        }            
+        } 
+        activateButton()           
     }
 
+let activateButton =()=>{
+    if(arr.length == 4){
+       $('#submit').attr("disabled", false);
+   }else{
+    $('#submit').attr("disabled", true);
+   }
+
+}
+   
 $('#submit').click(()=>{
     $.ajax({
         type: "POST",
         url: "/ewas.covid.edu/submit",
         data: {votes:arr},
-        // dataType: "dataType",
         success: function (response) {
             console.log(response.response)
+            
         },
         error: (doc,textStatus,err)=>{
             alert('text status '+textStatus+', err '+err)
         }
     });
 })
-
-
 });

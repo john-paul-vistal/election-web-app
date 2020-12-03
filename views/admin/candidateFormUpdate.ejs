@@ -10,6 +10,8 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
     <link rel="stylesheet" href="/public/css/voters.css">
     <link rel="stylesheet" href="/public/css/form.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="/public/js/studentRegistration.js"></script>
 </head>
 
 <body>
@@ -22,23 +24,35 @@
                 <% candidate.forEach(data=>{%>
                     <form action="./<%=data._id%>" method="POST" autocomplete="off">
                         <div class="float-left" style="margin-left: 13px"><i class="fa fa-user"> Personal Info</i></div><br>
-                        <div class="conatiner mb-5">
-                            <div class="form-group d-inline">
-                                <input style="width: 30%;" type="text" name="firstname" placeholder="First Name" value="<%=data.firstname%>" required>
+                        <div class="conatiner d-inline mb-3">
+                            <div class="input">
+                                <div class="form-group d-inline">
+                                    <input style="width: 90%;" type="text" id="fname" name="firstname" placeholder="First Name" value="<%=data.firstname%>" required>
+                                </div>
+                                <small id="efname">.error</small>
                             </div>
-                            <div class="form-group d-inline ml-3">
-                                <input style="width: 30%;" type="text" name="lastname" placeholder="Last Name" value="<%=data.lastname%>" required>
+                            <div class="input">
+                                <div class="form-group d-inline ml-3">
+                                    <input style="width: 90%;" type="text" id="lname" name="lastname" placeholder="Last Name" value="<%=data.lastname%>" required>
+                                </div>
+                                <small id="elname">.error</small>
                             </div>
-                            <div class="form-group d-inline ml-3">
-                                <input style="width: 30%;" type="text" name="middlename" placeholder="Middle Name" value="<%=data.middlename%>" required>
+                            <div class="input">
+                                <div class="form-group d-inline ml-3">
+                                    <input style="width: 90%;" type="text" id="mname" name="middlename" placeholder="Middle Name" value="<%=data.middlename%>" required>
+                                </div>
+                                <small id="emname">.error</small>
                             </div>
                         </div>
+                        <br><br>
+                        <div class="float-left mt-4" style="margin-left: 13px;text-align: left;"><i class="fa fa-user"> Candidacy
+                            Info</i></div>
+                        <br><br>
                         <hr>
-                        <div class="float-left" style="margin-left: 13px"><i class="fa fa-user"> Candidacy Info</i></div><br>
-                        <div class="conatiner px-3">
+                        <div class="container px-3">
                             <div class="row">
-                                <div class="col-sm-5 form-group">
-                                    <label for="birthday"><i class="fa fa-id-card"></i></label>
+                                <div class="col-sm form-group" style="margin-left: -20%;">
+                                    <label for="id"><i class="fa fa-id-card "></i></label>
                                     <input type="text" name="id" placeholder="ID Number...." value="<%=data.id%>" readonly>
                                 </div>
 
@@ -57,12 +71,15 @@
                                 </div>
                             </div>
                         </div>
-                        <button type="submit" class="btn btn-primary mt-5" style="font-size:large;border-radius: 30px;padding-left: 150px;padding-right: 150px;padding-top: 10px;padding-bottom: 10px;">SAVE CHANGES</button>
+                        <button type="submit" class="btn btn-primary mt-5" id="submit" style="font-size:large;border-radius: 30px;padding-left: 150px;padding-right: 150px;padding-top: 10px;padding-bottom: 10px;">SAVE
+                        CHANGES</button>
                     </form>
                     <% }); %>
             </div>
         </div>
     </center>
+    <input type="hidden" id="validate" name="validate" value="5">
+    <input type="hidden" id="check" name="update" value="update">
 </body>
 
 </html>

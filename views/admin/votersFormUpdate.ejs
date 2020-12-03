@@ -34,7 +34,8 @@
         <center>
             <div class="wrapper fadeInDown">
                 <div style="position: relative;" class="mainCard shadow-lg p-5 mb-5 bg-white rounded mt-5">
-                    <a href="../voters"><button style="position: absolute;left:4px;top:4px" class="btn btn-secondary px-3"><i class="fa fa-arrow-left"></i></button></a>
+                    <a href="../voters"><button style="position: absolute;left:4px;top:4px"
+                        class="btn btn-secondary px-3"><i class="fa fa-arrow-left"></i></button></a>
                     <h3 class="mb-4">Voters Information Form</h3>
                     <hr>
                     <% voter.forEach(data=>{%>
@@ -82,7 +83,7 @@
                                     </div>
                                     <div class="col">
                                         <select class="form-control" id="region" name="region" style="margin-top: 17px;" required>
-                                        <%
+                                    <%
                                         var options = [ "I", "II", "III","IV-A", "IV-B", "V","NCR","CAR", "VI", "VII", "VIII", "IX", "X", "XI","XII","XIII","BARMM"];
                                         for ( var i = 0; i < options.length; i++ )
                                         {
@@ -104,12 +105,13 @@
                                     <div class="col-sm">
                                         <label for="gender"></label>
                                         <select class="form-control" id="gender" name="gender" style="margin-top: 1px;" required>
-                                        <%
+                                    <%
                                         var options = [ "MALE", "FEMALE"];
                                         for ( var i = 0; i < options.length; i++ )
                                         {
                                             var selected = ( data.gender == options[i]) ? "selected" : "";
-                                            %><option value="<%=options[ i ] %>" <%=selected %>><%=options[i]%></option><%
+                                            %><option value="<%=options[ i ] %>" <%=selected %>><%=options[i]%>
+                                    </option><%
                                         }
                                         %>
                                 </select>
@@ -117,12 +119,13 @@
                                     <div class="col-sm">
                                         <label for="grade"></label>
                                         <select class="form-control" id="gradelevel" name="gradelevel" style="margin-top: 1px;" required>
-                                        <%
+                                    <%
                                         var options = [ "7", "8", "9", "10", "11", "12"];
                                         for ( var i = 0; i < options.length; i++ )
                                         {
                                             var selected = ( data.gradelevel == options[i]) ? "selected" : "";
-                                            %><option value="<%=options[ i ] %>" <%=selected %>><%=options[i]%></option><%
+                                            %><option value="<%=options[ i ] %>" <%=selected %>><%=options[i]%>
+                                    </option><%
                                         }
                                         %>
                                 </select>
@@ -148,14 +151,17 @@
                                 </div>
                                 <br>
                             </div>
-                            <hr>
-                            <button type="submit" id="submit" class="btn btn-primary" style="font-size:large;border-radius: 30px;padding-left: 150px;padding-right: 150px;padding-top: 10px;padding-bottom: 10px;">SAVE CHANGES</button>
+
+                            <button type="submit" id="submit" class="btn btn-primary" style="font-size:large;border-radius: 30px;padding-left: 150px;padding-right: 150px;padding-top: 10px;padding-bottom: 10px;">SAVE
+                        CHANGES</button>
                 </div>
                 </form>
                 <%})%>
             </div>
             </div>
         </center>
+        <input type="hidden" id="validate" name="validate" value="5">
+        <input type="hidden" id="check" name="update" value="update">
 </body>
 
 </html>

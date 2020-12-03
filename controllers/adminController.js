@@ -24,16 +24,17 @@ const validateToken = (request, response, next) => {
 
         if (authorizationHeader === null) {
             response.status(401).redirect("/ewas.covid.edu/admin")
+        } else {
+            jwt.verify(authorizationHeader, process.env.ACCESS_TOKEN, (error, data) => {
+                if (error) {
+                    response.status(401).redirect("/ewas.covid.edu/admin")
+                } else {
+                    request.user = data
+                    next()
+                }
+            })
+
         }
-
-        jwt.verify(authorizationHeader, process.env.ACCESS_TOKEN, (error, data) => {
-            if (error) {
-                response.status(401).redirect("/ewas.covid.edu/admin")
-            }
-            request.user = data
-            next()
-        })
-
     } catch (e) {
         return response.status(400).json({
             error: e,
