@@ -1,5 +1,6 @@
 const Candidate = require("../models/candidate.model");
 const Admin = require("../models/admin.model");
+const Voters = require("../models/voters.model");
 const parseRequestBody = require("../utilities/parseRequestBody");
 
 const getAllCandidate = async(request, response) => {
@@ -19,6 +20,23 @@ const getAllCandidate = async(request, response) => {
             email: adminUser.email,
             position: adminUser.position
         })
+
+    } catch (e) {
+        return response.status(400).json({
+            error: e,
+        });
+    }
+};
+const retrieveAllCandidate = async(request, response) => {
+    try {
+        const candidates = await Candidate.find();
+        if (!candidates) {
+            return response.status(400).json({
+                error: "Error in getting candidates!",
+            });
+        }
+
+        response.status(200).json(candidates)
 
     } catch (e) {
         return response.status(400).json({
@@ -47,26 +65,30 @@ const getCandidateById = async(request, response) => {
 };
 
 const addCandidate = async(request, response) => {
+
     try {
-
-        let newCandidate = new Candidate({
-            id: request.body.id,
-            firstname: request.body.firstname.toUpperCase(),
-            lastname: request.body.lastname.toUpperCase(),
-            middlename: request.body.middlename.toUpperCase(),
-            position: request.body.position.toUpperCase(),
-        });
-
-        const result = await newCandidate.save();
-
-        if (!result) {
-            return response.status(400).json({
-                error: "Error in adding new Candidate!",
+        const candidate = await Voters.findOne({ votersId: request.body.id })
+        if (candidate != null) {
+            let newCandidate = new Candidate({
+                id: request.body.id,
+                firstname: request.body.firstname.toUpperCase(),
+                lastname: request.body.lastname.toUpperCase(),
+                middlename: request.body.middlename.toUpperCase(),
+                position: request.body.position.toUpperCase(),
             });
+
+            const result = await newCandidate.save();
+
+            if (!result) {
+                return response.status(400).json({
+                    error: "Error in adding new Candidate!",
+                });
+            }
+
+            response.redirect("/ewas.covid.edu/admin/candidates")
+        } else {
+            response.redirect("/ewas.covid.edu/admin/candidate-registration-form?error=Invalid ID number")
         }
-
-        response.redirect("/ewas.covid.edu/admin/candidates")
-
     } catch (e) {
         return response.status(400).json({
             error: e,
@@ -118,5 +140,6 @@ module.exports = {
     addCandidate,
     getCandidateById,
     modifyCandidate,
-    deleteCandidate
+    deleteCandidate,
+    retrieveAllCandidate
 };

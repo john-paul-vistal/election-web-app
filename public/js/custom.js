@@ -24,7 +24,7 @@ $(document).ready(function() {
                 confirmButtonText: 'Sign Out'
             }).then((result) => {
                 if (result.isConfirmed) {
-                    window.location = "/ewas.covid.edu/admin"
+                    window.location = "/ewas.covid.edu/admin/logout"
                 }
             })
         })

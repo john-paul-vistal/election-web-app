@@ -1,7 +1,7 @@
 const mongoose = require('mongoose');
 
 const candidateSchema = mongoose.Schema({
-    id: { type: Number, required: true, ref: "Voters" },
+    id: { type: Number, required: true, },
     firstname: { type: String, required: true },
     lastname: { type: String, required: true },
     middlename: { type: String, required: true },

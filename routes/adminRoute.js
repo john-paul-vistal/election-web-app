@@ -9,10 +9,13 @@ const VotersControllers = require("../controllers/votersControllers");
 
 router.get("/", AdminControllers.getLogin);
 router.post("/login", AdminControllers.loginValidation);
+router.get("/logout", AdminControllers.logout);
 router.get("/dashboard", AdminControllers.validateToken, AdminControllers.getDashboard);
-router.get("/admin-registration-form", AdminControllers.getAdminRegistration);
-router.get("/voters-registration-form", AdminControllers.getStudentRegistration);
-router.get("/candidate-registration-form", AdminControllers.getCandidacyForm);
+router.get("/admin-registration-form", AdminControllers.validateToken, AdminControllers.getAdminRegistration);
+router.get("/voters-registration-form", AdminControllers.validateToken, AdminControllers.getStudentRegistration);
+router.get("/candidate-registration-form", AdminControllers.validateToken, AdminControllers.getCandidacyForm);
+router.get("/view-profile/:id", AdminControllers.validateToken, AdminControllers.getProfile);
+router.post("/update/:id", AdminControllers.updateProfile);
 
 
 // START ADMINISTRATION ROUTES
@@ -29,6 +32,7 @@ router.get("/candidates", AdminControllers.validateToken, CandidatesControllers.
 router.get("/candidate/:id", CandidatesControllers.getCandidateById)
 router.post("/candidate/:id", CandidatesControllers.modifyCandidate)
 router.get("/candidate/delete/:id", CandidatesControllers.deleteCandidate)
+router.get('/retieveData', CandidatesControllers.retrieveAllCandidate)
     //END CANDIDATE ROUTES
 
 //START VOTER ROUTES

@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Profile</title>
+    <link rel="stylesheet" href="/public/css/voters.css">
+    <link rel="stylesheet" href="/public/css/form.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <style>
+        body {
+            background-color: lightgray;
+        }
+        
+        .cover-photo {
+            background: url("/public/img/bg.png");
+            background-size: cover;
+            background-repeat: no-repeat;
+            height: 400px;
+        }
+        
+        .profile-img {
+            position: absolute;
+            width: 250px;
+            height: 250px;
+            top: 255px;
+            left: 80px;
+            background: white;
+        }
+        
+        .modify {
+            text-align: center;
+            position: absolute;
+            width: 55px;
+            height: 55px;
+            top: 380px;
+            right: 10px;
+            background: rgb(255, 255, 255);
+        }
+        
+        .back {
+            text-align: center;
+            position: absolute;
+            top: 53px;
+            right: 67px;
+            z-index: 100;
+        }
+    </style>
+</head>
+
+<body>
+    <center>
+        <div class="wrapper fadeInDown">
+            <!-- CODE START -->
+            <div class="button text-center btn">
+                <a href="javascript:history.back()"><button class="btn btn-secondary rounded back px-5">Back</button></a>
+            </div>
+            <form action="/ewas.covid.edu/admin/update/<%=admin._id%>" method="POST">
+                <input type="hidden" name="_id" value="<%=admin._id%>">
+                <div style="position: relative;margin-left: 5%;margin-right: 5%;" class=" bg-white rounded shadow mt-4">
+                    <div class="cover-photo">
+                    </div>
+                    <div class="profile" style="border-top: solid black 2px ;box-shadow: 0 -1px 10px;">
+                        <img class="profile-img rounded-circle shadow" src="/public/img/profile.png" alt="">
+                    </div>
+                    <div class="button text-center btn update">
+                        <p class="text-dark rounded-circle modify" style="font-size: xx-large;">
+                            <i style="width: 50px;height: 50px;background: rgb(0, 0, 0);" class="rounded-circle text-white fa fa-pencil p-2 shadow"></i>
+                        </p>
+                    </div>
+                    <div class="row">
+                        <div class="col-3">
+                            <div style="margin-top:100px">
+                                <div class="px-5 py-2 bg-primary my-2" style="width:265px;border-top-right-radius: 30px;border-bottom-right-radius: 30px;"><i class="fa fa-envelope"></i></div>
+                                <div class="px-5 py-2 bg-primary my-2" style="width:265px;border-top-right-radius: 30px;border-bottom-right-radius: 30px;"><i class="fa fa-facebook"></i></div>
+                                <div class="px-5 py-2 bg-primary my-2" style="width:265px;border-top-right-radius: 30px;border-bottom-right-radius: 30px;"><i class="fa fa-linkedin"></i></div>
+                            </div>
+                        </div>
+                        <div class="col px-4">
+                            <div class="conatiner mt-5">
+                                <div class="float-left" style="margin-left: 13px; font: 18px bold;"><i class="fa fa-user">
+                                    PERSONAL INFORMATION</i></div><br>
+                                <div class="d-flex">
+                                    <div class="col input-group d-inline">
+                                        <label for="fName"></label>
+                                        <div class="input-group-prepend">
+                                            <input type="text" class="mt-n20 transparent field" name="firstname" placeholder="First Name" value="<%=admin.firstname%>">
+                                        </div>
+                                    </div>
+                                    <div class="col input-group d-inline">
+                                        <label for="lName"></label>
+                                        <div class="input-group-prepend">
+                                            <input type="text" class="mt-n20 transparent field" name="lastname" placeholder="Last Name" value="<%=admin.lastname%>">
+                                        </div>
+                                    </div>
+                                    <div class="col input-group d-inline">
+                                        <label for="mName"></label>
+                                        <div class="input-group-prepend">
+                                            <input type="text" class="mt-n20 transparent field" name="middlename" placeholder="Middle Name" value="<%=admin.middlename%>">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="d-flex">
+                                    <div class="col input-group d-inline">
+                                        <label for="username"></label>
+                                        <div class="input-group-prepend">
+                                            <input type="text" class="mt-n20 transparent field" name="username" placeholder="Username" value="<%=admin.username%>">
+                                        </div>
+                                    </div>
+                                    <div class="col input-group d-inline">
+                                        <label for="password"></label>
+                                        <div class="input-group-prepend">
+                                            <input type="password" class="mt-n20 transparent field" name="password" placeholder="Password" value="<%=admin.password%>">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="d-flex">
+                                    <div class="col input-group d-inline">
+                                        <label for="email"></label>
+                                        <div class="input-group-prepend">
+                                            <input type="text" class="mt-n20 transparent field" name="email" placeholder="Email Address" value="<%=admin.email%>">
+                                        </div>
+                                    </div>
+                                    <div class="col input-group d-inline">
+                                        <label for="number"></label>
+                                        <div class="input-group-prepend">
+                                            <input type="text" class="mt-n20 transparent field" name="contactNumber" placeholder="Contact Number" value="<%=admin.contactNumber%>">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div><br>
+                    <div class="px-4 d-flex">
+                        <div class="col input-group d-inline">
+                            <label for="interests"></label>
+                            <div class="input-group-prepend">
+                                <input type="date" class="mt-n20 transparent field" name="birthDate" placeholder="Birthdate" value="<%=dateFormater(admin.birthDate)%>">
+                            </div>
+                        </div>
+                        <div class="col input-group d-inline">
+                            <label for="interests"></label>
+                            <div class="input-group-prepend">
+                                <input type="text" class="mt-n20 transparent field" name="age" placeholder="Age" value="<%=admin.age%>">
+                            </div>
+                        </div>
+                        <div class="col input-group d-inline">
+                            <label for="interests"></label>
+                            <div class="input-group-prepend">
+                                <input type="text" class="mt-n20 transparent field" name="gender" placeholder="Gender" value="<%=admin.gender%>">
+                            </div>
+                        </div>
+                        <div class="col input-group d-inline">
+                            <label for="interests"></label>
+                            <div class="input-group-prepend">
+                                <input type="text" class="mt-n20 transparent" name="position" placeholder="Position" value="<%=admin.position%>" readonly>
+                            </div>
+                        </div>
+                    </div><br>
+                    <div class="px-4 mb-5">
+                        <div class="d-flex">
+                            <div class="col input-group d-inline">
+                                <div class="float-left" style="margin-left: 13px; font: 18px bold;"><i class="fa fa-map-marker">
+                                ADDRESS</i></div>
+                                <label for="skills"></label>
+                                <div class="input-group-prepend">
+                                    <input type="text" class="mt-n20 transparent field" name="barangay" placeholder="Skills" value="<%=admin.barangay%>">
+                                </div>
+                            </div>
+                            <div class="col input-group d-inline">
+                                <label for="skills"></label>
+                                <div class="input-group-prepend">
+                                    <input type="text" class="mt-n20 transparent field" name="municipality" placeholder="Skills" value="<%=admin.municipality%>">
+                                </div>
+                            </div>
+                            <div class="col input-group d-inline">
+                                <label for="skills"></label>
+                                <div class="input-group-prepend">
+                                    <input type="text" class="mt-n20 transparent field" name="province" placeholder="Skills" value="<%=admin.province%>">
+                                </div>
+                            </div>
+                            <div class="col input-group d-inline">
+                                <label for="skills"></label>
+                                <div class="input-group-prepend">
+                                    <input type="text" class="mt-n20 transparent field" name="region" placeholder="Skills" value="<%=admin.region%>">
+                                </div>
+                            </div>
+                        </div><br>
+                    </div>
+                    <button class="btn btn-warning mb-5 btn-block rounded-0 save">SAVE CHANGES</button>
+                </div>
+            </form>
+            <!-- END CODE -->
+        </div>
+    </center>
+    <% function dateFormater(date){
+        var day = ("0" + date.getDate()).slice(-2);
+        var month = ("0" + (date.getMonth() + 1)).slice(-2);
+        return date.getFullYear()+"-"+month+"-"+day
+    }%>
+
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+        <script>
+            $(document).ready(function() {
+                $('.field').attr("readonly", true)
+                $('.save').attr("disabled", true)
+
+                $('.update').click(() => {
+                    $('.field').attr("readonly", false)
+                    $('.save').attr("disabled", false)
+                })
+            });
+        </script>
+</body>
+
+</html>

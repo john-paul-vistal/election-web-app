@@ -4,7 +4,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=, initial-scale=1.0">
-    <title>Admin Registration Form</title>
+    <title>EWAS</title>
+    <link rel="icon" href="/public/img/logo.png">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
     <link rel="stylesheet" href="../../public/css/voters.css">
@@ -78,6 +79,9 @@
                     </div>
                     <input type="hidden" id="validate" name="validate" value="3">
                     <button type="submit" id="submit" class="btn btn-primary mt-5" style="font-size:large;border-radius: 30px;padding-left: 150px;padding-right: 150px;padding-top: 10px;padding-bottom: 10px;">Register</button>
+                    <p class="mt-1 text-danger ">
+                        <%=error%>
+                    </p>
                 </form>
             </div>
         </div>

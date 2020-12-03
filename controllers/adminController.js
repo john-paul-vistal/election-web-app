@@ -1,8 +1,10 @@
 const { request, response } = require("express");
+const parseRequestBody = require("../utilities/parseRequestBody");
 const jwt = require('jsonwebtoken')
 const Admin = require("../models/admin.model");
 const Candidate = require("../models/candidate.model");
 const Voters = require("../models/voters.model");
+const Votes = require("../models/votes.model");
 const { post } = require("../routes/adminRoute");
 
 const getLogin = (request, response) => {
@@ -21,16 +23,12 @@ const validateToken = (request, response, next) => {
         const authorizationHeader = request.cookies.authoration
 
         if (authorizationHeader === null) {
-            response.status(401).json({
-                message: "Invalid Token"
-            })
+            response.status(401).redirect("/ewas.covid.edu/admin")
         }
 
         jwt.verify(authorizationHeader, process.env.ACCESS_TOKEN, (error, data) => {
             if (error) {
-                response.status(401).json({
-                    message: "Invalid Token"
-                })
+                response.status(401).redirect("/ewas.covid.edu/admin")
             }
             request.user = data
             next()
@@ -67,7 +65,6 @@ const loginValidation = async(request, response) => {
             response.redirect('/ewas.covid.edu/admin/dashboard')
         }
     } catch (e) {
-        console.log("dfksdfhsdkfsdfskdjfkj ERROR DIRI")
         return response.status(400).json({
             error: e,
         });
@@ -80,6 +77,7 @@ const getDashboard = async(request, response) => {
         const adminsCount = await Admin.find()
         const candidatesCount = await Candidate.find()
         const votersCount = await Voters.find()
+        const votesCount = await Votes.find()
         response.render("./admin/dashboard", {
             id: request.user.id,
             fullname: request.user.fullName,
@@ -88,6 +86,7 @@ const getDashboard = async(request, response) => {
             adminsCount: adminsCount.length,
             candidatesCount: candidatesCount.length,
             votersCount: votersCount.length,
+            votesCount: votesCount.length,
         })
 
     } catch (e) {
@@ -119,13 +118,56 @@ const getStudentRegistration = (request, response) => {
 
 const getCandidacyForm = (request, response) => {
     try {
-        response.render("./admin/candidateForm")
+        response.render("./admin/candidateForm", { error: request.query.error })
     } catch (e) {
         return response.status(400).json({
             error: e,
         });
     }
 };
+
+const getProfile = async(request, response) => {
+    try {
+        const admin = await Admin.findOne({ _id: request.params.id })
+        response.render("./admin/viewProfile", {
+            admin: admin
+        })
+    } catch (e) {
+        return response.status(400).json({
+            error: e,
+        });
+    }
+};
+
+const updateProfile = async(request, response) => {
+    try {
+        const updates = parseRequestBody(request.body);
+        const result = await Admin.updateOne({ _id: request.params.id }, { $set: updates });
+        if (!result) {
+            return response.status(400).json({
+                error: "Error in updating admin!",
+            });
+        }
+        response.clearCookie('authoration')
+        response.redirect("/ewas.covid.edu/admin")
+
+    } catch (e) {
+        return response.status(400).json({
+            error: e,
+        });
+    }
+}
+
+const logout = (request, response) => {
+    try {
+        response.clearCookie('authoration')
+        response.redirect("/ewas.covid.edu/admin")
+    } catch (e) {
+        return response.status(400).json({
+            error: e,
+        });
+    }
+}
 
 
 module.exports = {
@@ -135,5 +177,8 @@ module.exports = {
     getCandidacyForm,
     getLogin,
     loginValidation,
-    validateToken
+    validateToken,
+    getProfile,
+    updateProfile,
+    logout
 };
