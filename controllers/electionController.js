@@ -1,5 +1,7 @@
 const mongoose = require('mongoose')
 const Candidates = require('../models/candidate.model');
+const PersonVoted = require('../models/votes.model')
+const Voters = require('../models/voters.model')
 mongoose.set('useFindAndModify', false);
 
 const logInPage = (request, response) => {
@@ -13,19 +15,26 @@ const logInPage = (request, response) => {
         });
     }
 };
-
+var voters_id;
 const validate = async(request, response) => {
     const find = await Candidates.find({ id: request.body.id })
+    const check_voted = await PersonVoted.find({votersId: request.body.id})
     if (find.length == 0) {
         response.render('./voters/login', {
             error: "Invalid id number! Try again!☺"
         })
-    } else {
+    }else if(check_voted.length != 0){
+        response.render('./voters/login', {
+            error: "Already voted!☺"
+        })
+    }else {
+        voters_id = request.body.id
         response.redirect('/ewas.covid.edu/voting_form')
     }
 }
 
 const electionForm = async(request, response) => {
+    const voter = await Voters.find({votersId:voters_id})
     try {
         const president = await Candidates.find({ position: "PRESIDENT" })
         const v_president = await Candidates.find({ position: "VICE-PRESIDENT" })
@@ -52,12 +61,11 @@ const electionForm = async(request, response) => {
             nine_rep: nineRep,
             ten_rep: tenRep,
             eleven_rep: elevenRep,
-            twelve_rep: twelveRep
+            twelve_rep: twelveRep,
+            grade: voter[0].gradelevel
         })
     } catch (e) {
-        return response.status(400).json({
-            error: e,
-        });
+        response.redirect('/ewas.covid.edu')
     }
 }
 
@@ -66,11 +74,29 @@ const submit = (request, response) => {
         request.body.votes.map((element) => {
             increment(element)
         });
+        direct(voters_id,request.body.votes)
         response.json({ response: "Success!" })
     } catch (e) {
         console.log(e)
     }
 
+}
+ 
+let direct = async (id,vote_list) =>{
+    try{
+        let person_votes = new PersonVoted({
+            votersId: id,
+            vote: vote_list
+        })
+        const result = await person_votes.save();
+        if (!result) {
+            return response.status(400).json({
+                error: "Failed to save voter!",
+            });
+        }
+    }catch(e){
+        console.log(e)
+    }
 }
 
 let increment = async(id) => {

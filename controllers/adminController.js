@@ -67,7 +67,6 @@ const loginValidation = async(request, response) => {
             response.redirect('/ewas.covid.edu/admin/dashboard')
         }
     } catch (e) {
-        console.log("dfksdfhsdkfsdfskdjfkj ERROR DIRI")
         return response.status(400).json({
             error: e,
         });

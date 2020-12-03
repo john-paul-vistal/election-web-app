@@ -1,16 +1,12 @@
 $(document).ready(() => {
-    let errors = { fname: true, lname: true, mname: true, email: true, contact: true };
-    button = (errors) => {
-        // $('#submit').attr('disabled',(check.length>0)? false:true);
-        // console.log(errors)
-        // Object.keys(errors).filter(error => { console.log(error[])})
+
+    button = (error) => {
         count = 0;
-        for (let error of Object.values(errors)) {
-            if (error == false) {
+        for (let element of Object.values(error)) {
+            if (element == false) {
                 count++;
             }
         }
-        // console.log($('#validate').val())
         if (count == $('#validate').val()) {
             console.log("Ok na!")
             $('#submit').attr('disabled', false)
@@ -18,7 +14,23 @@ $(document).ready(() => {
             $('#submit').attr('disabled', true)
         }
     }
-    button(errors)
+
+    let errors = { fname: true, lname: true, mname: true, email: true, contact: true }
+    if($('#check').val()=="register"){
+        for (const element of Object.keys(errors)) {
+            errors[element] = true
+            console.log(errors)
+        }
+        button(errors)
+    }else{
+        for (const element of Object.keys(errors)) {
+            errors[element] = false
+        }
+        console.log(errors)
+        button(errors)
+    }
+    
+    
     $("#email").on("input", function() {
         var filter = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
         if (!filter.test($("#email").val())) {
@@ -74,14 +86,11 @@ $(document).ready(() => {
             }
             button(errors)
         })
-        // $("#gender").click(() => {
-        //     $("#gender").val() == "....Gender..."? errors.push("Error") : errors.pop();
-        //     console.log(errors)
-        // })
+
     let errorResult = (input, errorId) => {
         $("#" + errorId).text(`Invalid ${input}!`).css("color", "red");
     }
     let successResult = (errorId) => {
-        $("#" + errorId).text(".").css("color", "white")
+        $("#" + errorId).text(".error").css("color", "white")
     }
 });

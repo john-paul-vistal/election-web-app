@@ -21,7 +21,7 @@
 </style>
 
 <body>
-
+    <input type="hidden" id="grade" name="grade" value="<%= grade %>">
     <div class="header shadow-lg d-flex justify-content-between">
         <div class="ml-2">
             <h2>UNIVERSITY OF SAN CARLOS</h2>
@@ -33,7 +33,7 @@
         </div>
     </div>
     <div class="card shadow bg-white rounded p-2">
-        <h5 class="role">President Candidates:</h5>
+        <h5 class="role">President:</h5>
         <div class="card-body">
             <% presidents.forEach((president) => {%>
             <div class="custom-control-lg custom-control custom-checkbox">
@@ -48,7 +48,7 @@
     </div>
 
     <div class="card p-2 shadow bg-white rounded">
-        <h5 class="role">Vice President Candidates:</h5>
+        <h5 class="role">Vice President:</h5>
         <div class="card-body">
             <% v_presidents.forEach((vice_president)=>{ %>
             <div class="custom-control-lg custom-control custom-checkbox">
@@ -63,7 +63,7 @@
     </div>
 
     <div class="card p-2 shadow bg-white rounded">
-        <h5 class="role">Treasurer Candidates:</h5>
+        <h5 class="role">Treasurer:</h5>
         <div class="card-body">
             <% treasurers.forEach((treasurer)=>{ %>
             <div class="custom-control-lg custom-control custom-checkbox">
@@ -77,7 +77,7 @@
     </div>
 
     <div class="card p-2 shadow bg-white rounded">
-        <h5 class="role">Auditor Candidates:</h5>
+        <h5 class="role">Auditor:</h5>
         <div class="card-body">
             <% auditors.forEach((auditor)=>{ %>
             <div class="custom-control-lg custom-control custom-checkbox">
@@ -91,7 +91,7 @@
     </div>
 
     <div class="card p-2 shadow bg-white rounded">
-        <h5 class="role">Secretary Candidates:</h5>
+        <h5 class="role">Secretary:</h5>
         <div class="card-body">
             <% secretary.forEach((secretary_candidate)=>{ %>
             <div class="custom-control-lg custom-control custom-checkbox">
@@ -106,7 +106,7 @@
 
     <!-- Starting from this line, there are things that needed an update -->
     <div class="card p-2 shadow bg-white rounded">
-        <h5 class="role">P.I.O Candidates:</h5>
+        <h5 class="role">P.I.O:</h5>
         <div class="card-body">
             <% peace_officers.forEach((pio)=>{ %>
             <div class="custom-control-lg custom-control custom-checkbox">
@@ -119,8 +119,8 @@
         </div>
     </div>
 
-    <div class="card p-2 shadow bg-white rounded">
-        <h5 class="role">REPRESENTATIVE 7 Candidates:</h5>
+    <div class="card p-2 shadow bg-white rounded" id="7">
+        <h5 class="role">REPRESENTATIVE 7:</h5>
         <div class="card-body">
             <% seven_rep.forEach((seven)=>{ %>
             <div class="custom-control-lg custom-control custom-checkbox">
@@ -133,8 +133,8 @@
         </div>
     </div>
 
-    <div class="card p-2 shadow bg-white rounded">
-        <h5 class="role">REPRESENTATIVE 8 Candidates:</h5>
+    <div class="card p-2 shadow bg-white rounded" id="8">
+        <h5 class="role">REPRESENTATIVE 8:</h5>
         <div class="card-body">
             <% eigth_rep.forEach((eigth)=>{ %>
             <div class="custom-control-lg custom-control custom-checkbox">
@@ -147,8 +147,8 @@
         </div>
     </div>
 
-    <div class="card p-2 shadow bg-white rounded">
-        <h5 class="role">REPRESENTATIVE 9 Candidates:</h5>
+    <div class="card p-2 shadow bg-white rounded" id="9">
+        <h5 class="role">REPRESENTATIVE 9:</h5>
         <div class="card-body">
             <% nine_rep.forEach((nine)=>{ %>
             <div class="custom-control-lg custom-control custom-checkbox">
@@ -161,8 +161,8 @@
         </div>
     </div>
 
-    <div class="card p-2 shadow bg-white rounded">
-        <h5 class="role">REPRESENTATIVE 10 Candidates:</h5>
+    <div class="card p-2 shadow bg-white rounded" id="10">
+        <h5 class="role">REPRESENTATIVE 10:</h5>
         <div class="card-body">
             <% ten_rep.forEach((ten)=>{ %>
             <div class="custom-control-lg custom-control custom-checkbox">
@@ -175,8 +175,8 @@
         </div>
     </div>
 
-    <div class="card p-2 shadow bg-white rounded">
-        <h5 class="role">REPRESENTATIVE 11 Candidates:</h5>
+    <div class="card p-2 shadow bg-white rounded" id="11">
+        <h5 class="role">REPRESENTATIVE 11:</h5>
         <div class="card-body">
             <% eleven_rep.forEach((eleven)=>{ %>
             <div class="custom-control-lg custom-control custom-checkbox">
@@ -189,8 +189,8 @@
         </div>
     </div>
 
-    <div class="card p-2 shadow bg-white rounded">
-        <h5 class="role">REPRESENTATIVE 12 Candidates:</h5>
+    <div class="card p-2 shadow bg-white rounded" id="12">
+        <h5 class="role">REPRESENTATIVE 12:</h5>
         <div class="card-body">
             <% twelve_rep.forEach((twelve)=>{ %>
             <div class="custom-control-lg custom-control custom-checkbox">

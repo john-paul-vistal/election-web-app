@@ -17,7 +17,7 @@
         color: white;
         margin: 0 auto;
     }
-    
+
     .input {
         float: left;
         width: 32%;
@@ -30,58 +30,66 @@
         var month = ("0" + (date.getMonth() + 1)).slice(-2);
         return date.getFullYear()+"-"+month+"-"+day
     }%>
-        <center>
-            <div class="wrapper fadeInDown">
-                <div style="position: relative;" class="mainCard shadow-lg p-5 mb-5 bg-white rounded mt-5">
-                    <a href="../voters"><button style="position: absolute;left:4px;top:4px" class="btn btn-secondary px-3"><i class="fa fa-arrow-left"></i></button></a>
-                    <h3 class="mb-4">Voters Registration Form</h3>
-                    <hr>
-                    <% voter.forEach(data=>{%>
-                        <form action="./<%=data._id%>" method="POST" autocomplete="off">
-                            <div class="conatiner d-inline mb-3">
-                                <div class="input">
-                                    <div class="form-group">
-                                        <i class="fa fa-user"></i>
-                                        <input style="width: 80%;" type="text" class="name" id="fname" name="firstname" placeholder="First Name" value="<%=data.firstname%>" required>
-                                    </div>
-                                    <small id="efname">.</small>
-                                </div>
-                                <div class="input">
-                                    <div class="form-group ml-3">
-                                        <input style="width: 90%;" type="text" class="name" id="lname" name="lastname" placeholder="Last Name" value="<%=data.lastname%>" required>
-                                    </div>
-                                    <small id="elname">.</small>
-                                </div>
-                                <div class="input">
-                                    <div class="form-group ml-3">
-                                        <input style="width: 90%;" type="text" class="name" id="mname" name="middlename" placeholder="Middle Name" value="<%=data.middlename%>" required>
-                                    </div>
-                                    <small id="emname">.</small>
-                                </div>
+    <center>
+        <div class="wrapper fadeInDown">
+            <div style="position: relative;" class="mainCard shadow-lg p-5 mb-5 bg-white rounded mt-5">
+                <a href="../voters"><button style="position: absolute;left:4px;top:4px"
+                        class="btn btn-secondary px-3"><i class="fa fa-arrow-left"></i></button></a>
+                <h3 class="mb-4">Voters Registration Form</h3>
+                <hr>
+                <% voter.forEach(data=>{%>
+                <form action="./<%=data._id%>" method="POST" autocomplete="off">
+                    <div class="conatiner d-inline mb-3">
+                        <div class="input">
+                            <div class="form-group">
+                                <i class="fa fa-user"></i>
+                                <input style="width: 80%;" type="text" class="name" id="fname" name="firstname"
+                                    placeholder="First Name" value="<%=data.firstname%>" required>
+                            </div>
+                            <small id="efname">.</small>
+                        </div>
+                        <div class="input">
+                            <div class="form-group ml-3">
+                                <input style="width: 90%;" type="text" class="name" id="lname" name="lastname"
+                                    placeholder="Last Name" value="<%=data.lastname%>" required>
+                            </div>
+                            <small id="elname">.</small>
+                        </div>
+                        <div class="input">
+                            <div class="form-group ml-3">
+                                <input style="width: 90%;" type="text" class="name" id="mname" name="middlename"
+                                    placeholder="Middle Name" value="<%=data.middlename%>" required>
+                            </div>
+                            <small id="emname">.</small>
+                        </div>
+                    </div>
+
+                    <div class="conatiner">
+                        <div style="margin-left: 13px;text-align: left;"><i class="fa fa-address-book"> Address</i>
+                        </div>
+                        <div class="row">
+                            <div class="col">
+                                <input type="text" name="barangay" placeholder="Street/Brgy" value="<%=data.barangay%>"
+                                    required>
                             </div>
 
-                            <div class="conatiner">
-                                <div style="margin-left: 13px;text-align: left;"><i class="fa fa-address-book"> Address</i>
-                                </div>
-                                <div class="row">
-                                    <div class="col">
-                                        <input type="text" name="barangay" placeholder="Street/Brgy" value="<%=data.barangay%>" required>
-                                    </div>
-
-                                    <div class="col">
-                                        <input type="text" name="municipality" placeholder="City/Municipality" value="<%=data.municipality%>" required>
-                                    </div>
-                                </div>
+                            <div class="col">
+                                <input type="text" name="municipality" placeholder="City/Municipality"
+                                    value="<%=data.municipality%>" required>
                             </div>
+                        </div>
+                    </div>
 
-                            <div class="conatiner">
-                                <div class="row">
-                                    <div class="col">
-                                        <input type="text" name="province" placeholder="Province" value="<%=data.province%>" required>
-                                    </div>
-                                    <div class="col">
-                                        <select class="form-control" id="region" name="region" style="margin-top: 17px;" required>
-                                        <%
+                    <div class="conatiner">
+                        <div class="row">
+                            <div class="col">
+                                <input type="text" name="province" placeholder="Province" value="<%=data.province%>"
+                                    required>
+                            </div>
+                            <div class="col">
+                                <select class="form-control" id="region" name="region" style="margin-top: 17px;"
+                                    required>
+                                    <%
                                         var options = [ "I", "II", "III","IV-A", "IV-B", "V","NCR","CAR", "VI", "VII", "VIII", "IX", "X", "XI","XII","XIII","BARMM"];
                                         for ( var i = 0; i < options.length; i++ )
                                         {
@@ -90,71 +98,81 @@
                                         }
                                         %>
                                 </select>
-                                    </div>
-                                </div>
-                            </div><br>
-                            <div class="container px-4">
-                                <div class="row">
-                                    <div class="col-sm form-group">
-                                        <label for="birthday"><i class="fa fa-birthday-cake"></i></label>
-                                        <input type="date" name="birthdate" value="<%= dateFormater(data.birthdate)%>" required>
-                                    </div>
+                            </div>
+                        </div>
+                    </div><br>
+                    <div class="container px-4">
+                        <div class="row">
+                            <div class="col-sm form-group">
+                                <label for="birthday"><i class="fa fa-birthday-cake"></i></label>
+                                <input type="date" name="birthdate" value="<%= dateFormater(data.birthdate)%>" required>
+                            </div>
 
-                                    <div class="col-sm">
-                                        <label for="gender"></label>
-                                        <select class="form-control" id="gender" name="gender" style="margin-top: 1px;" required>
-                                        <%
+                            <div class="col-sm">
+                                <label for="gender"></label>
+                                <select class="form-control" id="gender" name="gender" style="margin-top: 1px;"
+                                    required>
+                                    <%
                                         var options = [ "MALE", "FEMALE"];
                                         for ( var i = 0; i < options.length; i++ )
                                         {
                                             var selected = ( data.gender == options[i]) ? "selected" : "";
-                                            %><option value="<%=options[ i ] %>" <%=selected %>><%=options[i]%></option><%
+                                            %><option value="<%=options[ i ] %>" <%=selected %>><%=options[i]%>
+                                    </option><%
                                         }
                                         %>
                                 </select>
-                                    </div>
-                                    <div class="col-sm">
-                                        <label for="grade"></label>
-                                        <select class="form-control" id="gradelevel" name="gradelevel" style="margin-top: 1px;" required>
-                                        <%
+                            </div>
+                            <div class="col-sm">
+                                <label for="grade"></label>
+                                <select class="form-control" id="gradelevel" name="gradelevel" style="margin-top: 1px;"
+                                    required>
+                                    <%
                                         var options = [ "7", "8", "9", "10", "11", "12"];
                                         for ( var i = 0; i < options.length; i++ )
                                         {
                                             var selected = ( data.gradelevel == options[i]) ? "selected" : "";
-                                            %><option value="<%=options[ i ] %>" <%=selected %>><%=options[i]%></option><%
+                                            %><option value="<%=options[ i ] %>" <%=selected %>><%=options[i]%>
+                                    </option><%
                                         }
                                         %>
                                 </select>
-                                    </div>
-                                </div>
                             </div>
-                            <div class="px-2">
-                                <div class="row">
-                                    <div class="col">
-                                        <div class="form-group d-inline">
-                                            <i class="fa fa-phone"></i>
-                                            <input type="text" id="contact" name="contact" placeholder="0000-000-0000" value="<%=data.contact%>" required>
-                                        </div>
-                                        <small id="econtact">.</small>
-                                    </div>
-                                    <div class="col">
-                                        <div class="form-group d-inline">
-                                            <i class="fa fa-envelope"></i>
-                                            <input type="email" id="email" name="email" placeholder="Email Address" value="<%=data.email%>" required>
-                                        </div>
-                                        <small id="error">.</small>
-                                    </div>
+                        </div>
+                    </div>
+                    <div class="px-2">
+                        <div class="row">
+                            <div class="col">
+                                <div class="form-group d-inline">
+                                    <i class="fa fa-phone"></i>
+                                    <input type="text" id="contact" name="contact" placeholder="0000-000-0000"
+                                        value="<%=data.contact%>" required>
                                 </div>
-                                <br>
+                                <small id="econtact">.</small>
                             </div>
-                            <hr>
-                            <button type="submit" id="submit" class="btn btn-primary" style="font-size:large;border-radius: 30px;padding-left: 150px;padding-right: 150px;padding-top: 10px;padding-bottom: 10px;">SAVE CHANGES</button>
-                </div>
-                </form>
-                <%})%>
+                            <div class="col">
+                                <div class="form-group d-inline">
+                                    <i class="fa fa-envelope"></i>
+                                    <input type="email" id="email" name="email" placeholder="Email Address"
+                                        value="<%=data.email%>" required>
+                                </div>
+                                <small id="error">.</small>
+                            </div>
+                        </div>
+                        <br>
+                    </div>
+
+                    <button type="submit" id="submit" class="btn btn-primary"
+                        style="font-size:large;border-radius: 30px;padding-left: 150px;padding-right: 150px;padding-top: 10px;padding-bottom: 10px;">SAVE
+                        CHANGES</button>
             </div>
-            </div>
-        </center>
+            </form>
+            <%})%>
+        </div>
+        </div>
+    </center>
+    <input type="hidden" id="validate" name="validate" value="5">
+    <input type="hidden" id="check" name="update" value="update">
 </body>
 
 </html>
