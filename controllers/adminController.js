@@ -5,6 +5,7 @@ const Admin = require("../models/admin.model");
 const Candidate = require("../models/candidate.model");
 const Voters = require("../models/voters.model");
 const Votes = require("../models/votes.model");
+const Archives = require("../models/archives.model");
 const { post } = require("../routes/adminRoute");
 
 const getLogin = (request, response) => {
@@ -227,8 +228,39 @@ const retieveUnvoted = async(request, response) => {
             error: e,
         });
     }
-
 }
+
+
+const moveToArchive = async(request, response) => {
+    try {
+        const candidates = await Candidate.find()
+        const votes = await Votes.find()
+        let archiveData = new Archives({
+            adminId: request.params.id,
+            candidates: candidates,
+            votes: votes
+        })
+
+        const result = await archiveData.save();
+
+        if (!result) {
+            return response.status(400).json({
+                error: "Error in adding new Archive!",
+            });
+        }
+
+        await Candidate.deleteMany({})
+        await Votes.deleteMany({})
+
+        response.redirect('/ewas.covid.edu/admin/dashboard')
+
+    } catch (e) {
+        return response.status(400).json({
+            error: e,
+        });
+    }
+}
+
 module.exports = {
     getAdminRegistration,
     getDashboard,
@@ -242,5 +274,6 @@ module.exports = {
     logout,
     getCountData,
     retrieveVotes,
-    retieveUnvoted
+    retieveUnvoted,
+    moveToArchive
 };

@@ -19,6 +19,7 @@ router.post("/update/:id", AdminControllers.updateProfile);
 router.get("/get-count-data", AdminControllers.getCountData);
 router.get('/retrieveAllVotes', AdminControllers.retrieveVotes);
 router.get('/retrieveUnvoted', AdminControllers.retieveUnvoted)
+router.get('/move-to-archive/:id', AdminControllers.moveToArchive)
 
 // START ADMINISTRATION ROUTES
 router.post("/administration/registration", RegistrationControllers.addAdmins);

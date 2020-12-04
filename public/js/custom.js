@@ -10,8 +10,8 @@ $(document).ready(function() {
                 }
             })
         })
-        client.on('message', function(topic, message) {
 
+        client.on('message', function(topic, message) {
             $.ajax('/ewas.covid.edu/admin/get-count-data', {
                 success: function(data, status, xhr) {
                     $('#voters').text(data.votersCount)
@@ -51,22 +51,50 @@ $(document).ready(function() {
             })
         })
 
+        $('#archive').click(function() {
+            let userId = $('#userId').val()
+            Swal.fire({
+                title: 'MOVE FILES TO ARCHIVE',
+                text: "Your files will be move to archive.",
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonColor: '#3085d6',
+                cancelButtonColor: '#d33',
+                confirmButtonText: 'Confirm',
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    let timerInterval
+                    Swal.fire({
+                        title: 'Moving Files',
+                        text: "Please wait for a while...",
+                        timer: 2000,
+                        timerProgressBar: true,
+                        showConfirmButton: false,
+                    }).then((result) => {
+                        if (result.dismiss === Swal.DismissReason.timer) {
+                            window.location = `/ewas.covid.edu/admin/move-to-archive/${userId}`
+                        }
+                    })
+                }
+            })
+        })
 
 
-        $.ajax('/ewas.covid.edu/admin/retrieveUnvoted', {
-            success: (data, status, xhr) => {
-                $('#tbody').empty()
-                data.forEach(element => {
-                    $('#tbody').append(`
+        client.on('message', function(topic, message) {
+            $.ajax('/ewas.covid.edu/admin/retrieveUnvoted', {
+                success: (data, status, xhr) => {
+                    $('#tbody').empty()
+                    data.forEach(element => {
+                        $('#tbody').append(`
                 <tr>
                 <td scope="row">${element.votersId}</td>
                 <td>${element.firstname}</td>
                 <td>${element.lastname}</td>
                 </tr>`)
-                });
-            }
+                    });
+                }
+            })
         })
-
 
 
         $("#search").on("keyup", function() {

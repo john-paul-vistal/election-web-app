@@ -2,6 +2,8 @@ $(document).ready(function() {
 
     var client = mqtt.connect('wss://mqtt.eclipse.org:443/mqtt')
 
+    var myDoughnutChart;
+
     client.on('connect', function() {
         console.log('connected')
         client.subscribe('ewas.covid.edu', function(err) {
@@ -281,129 +283,191 @@ $(document).ready(function() {
     })
 
 
+    var myChart
 
     function presidentDisplay(data) {
-        var myChart = new Chart(ctx, {
+        if (myChart) {
+            myChart.destroy();
+        }
+        myChart = new Chart(ctx, {
             type: 'horizontalBar',
             data: data,
             options: myOpts
         });
     }
+    var myChart2
 
     function vicePresidentDisplay(data) {
-        var myChart2 = new Chart(ctx2, {
+        if (myChart2) {
+            myChart2.destroy();
+        }
+        myChart2 = new Chart(ctx2, {
             type: 'horizontalBar',
             data: data,
             options: myOpts
         });
     }
+    var myChart3
 
     function secretaryDisplay(data) {
-        var myChart3 = new Chart(ctx3, {
+        if (myChart3) {
+            myChart3.destroy();
+        }
+        myChart3 = new Chart(ctx3, {
             type: 'horizontalBar',
             data: data,
             options: myOpts
         });
     }
+    var myChart4
 
     function treasurerDisplay(data) {
-        var myChart4 = new Chart(ctx4, {
+        if (myChart4) {
+            myChart4.destroy();
+        }
+        myChart4 = new Chart(ctx4, {
             type: 'horizontalBar',
             data: data,
             options: myOpts
         });
     }
+    var myChart5
 
     function auditorDisplay(data) {
-        var myChart5 = new Chart(ctx5, {
+        if (myChart5) {
+            myChart5.destroy();
+        }
+        myChart5 = new Chart(ctx5, {
             type: 'horizontalBar',
             data: data,
             options: myOpts
         });
     }
+    var myChart6
 
     function pioDisplay(data) {
-        var myChart6 = new Chart(ctx6, {
+        if (myChart6) {
+            myChart6.destroy();
+        }
+        myChart6 = new Chart(ctx6, {
             type: 'horizontalBar',
             data: data,
             options: myOpts
         });
     }
+    var myChart7
 
     function pooDisplay(data) {
-        var myChart7 = new Chart(ctx7, {
+        if (myChart7) {
+            myChart7.destroy();
+        }
+        myChart7 = new Chart(ctx7, {
             type: 'horizontalBar',
             data: data,
             options: myOpts
         });
     }
+    var myChart8
 
     function grade7Rep(data) {
-        var myChart8 = new Chart(ctx8, {
+        if (myChart8) {
+            myChart8.destroy();
+        }
+        myChart8 = new Chart(ctx8, {
             type: 'horizontalBar',
             data: data,
             options: myOpts
         });
     }
+    var myChart9
 
     function grade8Rep(data) {
-        var myChart9 = new Chart(ctx9, {
+        if (myChart9) {
+            myChart9.destroy();
+        }
+        myChart9 = new Chart(ctx9, {
             type: 'horizontalBar',
             data: data,
             options: myOpts
         });
     }
+    var myChart10
 
     function grade9Rep(data) {
-        var myChart10 = new Chart(ctx10, {
+        if (myChart10) {
+            myChart10.destroy();
+        }
+        myChart10 = new Chart(ctx10, {
             type: 'horizontalBar',
             data: data,
             options: myOpts
         });
     }
+    var myChart11
 
     function grade10Rep(data) {
-        var myChart11 = new Chart(ctx11, {
+        if (myChart11) {
+            myChart11.destroy();
+        }
+        myChart11 = new Chart(ctx11, {
             type: 'horizontalBar',
             data: data,
             options: myOpts
         });
     }
+    var myChart12
 
     function grade11Rep(data) {
-        var myChart12 = new Chart(ctx12, {
+        if (myChart12) {
+            myChart12.destroy();
+        }
+        myChart12 = new Chart(ctx12, {
             type: 'horizontalBar',
             data: data,
             options: myOpts
         });
     }
+    var myChart13
 
     function grade12Rep(data) {
-        var myChart13 = new Chart(ctx13, {
+        if (myChart13) {
+            myChart13.destroy();
+        }
+        myChart13 = new Chart(ctx13, {
             type: 'horizontalBar',
             data: data,
             options: myOpts
         });
     }
 
+    var unvotes = 0
+    var total = 0
+    client.on('message', function(topic, message) {
+        $.ajax('/ewas.covid.edu/admin/retrieveAllVotes', {
+            success: (data, status, xhr) => {
+                // unvotes = data.voters.length - data.votes.length
+                // total = data.votes.length
+                unvotes += 1
+                total += 1
+                var votersCountData = {
+                    labels: ["Already Voted", "Not Yet Voted"],
+                    datasets: [{
+                        backgroundColor: ["rgba(0, 235, 82)", "rgba(246, 250, 30)"],
+                        data: [data.votes.length, data.voters.length - data.votes.length],
+                    }]
+                };
+                doughnut(votersCountData)
+            }
 
-    $.ajax('/ewas.covid.edu/admin/retrieveAllVotes', {
-        success: (data, status, xhr) => {
-            var unvotes = data.voters.length - data.votes.length
-            var votersCountData = {
-                labels: ["Already Voted", "Not Yet Voted"],
-                datasets: [{
-                    backgroundColor: ["rgba(0, 235, 82)", "rgba(246, 250, 30)"],
-                    data: [data.votes.length, unvotes],
-                }]
-            };
-            doughnut(votersCountData)
-        }
-
+        })
     })
 
+
     function doughnut(data) {
-        var myDoughnutChart = new Chart(voterCount, {
+        if (myDoughnutChart) {
+            myDoughnutChart.destroy();
+        }
+        myDoughnutChart = new Chart(voterCount, {
             type: 'doughnut',
             data: data,
         });

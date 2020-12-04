@@ -32,6 +32,8 @@
                       </button>
                     <div class="dropdown-menu mt-3 text-center rounded shadow p-2" aria-labelledby="dropdownMenuButton" style="width:300px;margin-left: -235px;">
                         <img class="rounded-circle bg-warning" style="width: 90px;height: 90px;" src="/public/img/userIcon.png" alt="">
+                        <input id="fullName" type="hidden" value="<%=fullname%>">
+                        <input id="userId" type="hidden" value="<%=id%>">
                         <p class="mt-3" style="font-size: large;line-height: 5px;">
                             <b><%=fullname%></b>
                         </p>
@@ -67,17 +69,24 @@
         </div>
         <!-- Page content -->
         <div id="page-content-wrapper" class="w3-animate-top">
-            <button id="menuBtn" class="btn btn-primary rounded-circle float-left"><i class="fa fa-bars"></i></button>
+            <button id="menuBtn" class="btn btn-primary rounded-circle float-left" style="position: relative;z-index: 100;"><i class="fa fa-bars"></i></button>
             <div class="page-content">
-
                 <div class="container">
-                    <div class="bg-white shadow  my-3 rounded">
-
+                    <div class="bg-white shadow  my-3 rounded" style="position: relative;">
                         <ol class="breadcrumb bg-white mb-1">
                             <li class="breadcrumb-item active" aria-current="page">Home</li>
                             <li class="breadcrumb-item active" aria-current="page">Dashboard</li>
                         </ol>
-
+                        <%if(position == "ADMIN"){%>
+                            <div class="d-inline dropdown" style="position: absolute;top:5px;right: 10px;">
+                                <button class="btn btn-outline-primary" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    <i class="fa fa-cogs"></i>
+                                  </button>
+                                <div class="dropdown-menu mt-1 text-center rounded shadow-lg p-2" aria-labelledby="dropdownMenuButton" style="margin-left: -190px;">
+                                    <button id="archive" class="btn btn-warning">START NEW ELECTION YEAR</button>
+                                </div>
+                            </div>
+                            <%}%>
                     </div>
                     <div class="row mt-2">
                         <div class="col-md-3">
@@ -226,7 +235,7 @@
                                         </tr>
                                     </thead>
                                     <tbody id="tbody">
-                                        
+
                                     </tbody>
                                 </table>
                             </div>
