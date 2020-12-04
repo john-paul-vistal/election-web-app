@@ -43,7 +43,7 @@ const validateToken = (request, response, next) => {
 }
 
 
-const loginValidation = async(request, response) => {
+const loginValidation = async (request, response) => {
     try {
         let username = request.body.username;
         let password = request.body.password;
@@ -60,7 +60,7 @@ const loginValidation = async(request, response) => {
             }
 
             const accessToken = jwt.sign(user, process.env.ACCESS_TOKEN)
-                //Save cookie to client side
+            //Save cookie to client side
             response.cookie('authoration', accessToken, { httpOnly: true });
             //Redirect
             response.redirect('/ewas.covid.edu/admin/dashboard')
@@ -72,7 +72,7 @@ const loginValidation = async(request, response) => {
     }
 }
 
-const getDashboard = async(request, response) => {
+const getDashboard = async (request, response) => {
     try {
         const adminUser = await Admin.findOne({ _id: request.user.id })
         const adminsCount = await Admin.find()
@@ -127,7 +127,7 @@ const getCandidacyForm = (request, response) => {
     }
 };
 
-const getProfile = async(request, response) => {
+const getProfile = async (request, response) => {
     try {
         const admin = await Admin.findOne({ _id: request.params.id })
         response.render("./admin/viewProfile", {
@@ -140,7 +140,7 @@ const getProfile = async(request, response) => {
     }
 };
 
-const updateProfile = async(request, response) => {
+const updateProfile = async (request, response) => {
     try {
         const updates = parseRequestBody(request.body);
         const result = await Admin.updateOne({ _id: request.params.id }, { $set: updates });
@@ -170,7 +170,53 @@ const logout = (request, response) => {
     }
 }
 
+const retrieveVotes = async (request, response) => {
+    try {
+        const votes = await Votes.find();
+        const voters = await Voters.find();
+        if (!votes) {
+            return response.status(400).json({
+                error: "Error in getting votes!",
+            });
+        }
+        response.status(200).json({ votes: votes, voters: voters })
+    } catch (e) {
+        return response.status(400).json({
+            error: e,
+        });
+    }
+}
 
+const retieveUnvoted = async (request, response) => {
+    try {
+        const votes = await Votes.find();
+        const voters = await Voters.find();
+        if (!votes || !voters) {
+            return response.status(400).json({
+                error: "Error in getting votes!",
+            });
+        }
+        let count = 0
+        var listVoters = []
+        voters.forEach((voter) => {
+            votes.forEach((vote) => {
+                if (voter.votersId == vote.votersId) {
+                    count += 1
+                }
+            })
+            if (count == 0) {
+                listVoters.push(voter)
+            }
+            count=0
+        })
+        response.status(200).json(listVoters)
+    } catch (e) {
+        return response.status(400).json({
+            error: e,
+        });
+    }
+
+}
 module.exports = {
     getAdminRegistration,
     getDashboard,
@@ -181,5 +227,7 @@ module.exports = {
     validateToken,
     getProfile,
     updateProfile,
-    logout
+    logout,
+    retrieveVotes,
+    retieveUnvoted
 };
