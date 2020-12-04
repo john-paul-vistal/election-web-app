@@ -45,6 +45,7 @@ const retrieveAllCandidate = async(request, response) => {
     }
 };
 
+
 const getCandidateById = async(request, response) => {
     try {
         const candidate = await Candidate.find({ _id: request.params.id });
@@ -144,5 +145,6 @@ module.exports = {
     getCandidateById,
     modifyCandidate,
     deleteCandidate,
-    retrieveAllCandidate
+    retrieveAllCandidate,
+
 };

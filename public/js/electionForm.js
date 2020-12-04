@@ -42,6 +42,7 @@ $(document).ready(() => {
     vote = (roleClass, event, limit) => {
         if ($("#" + event.target.id).is(":checked")) {
             arr.push(event.target.id)
+            console.log(arr)
             for (let ids of arr) $("#" + ids).next().addClass('bold')
             if (limit == $(roleClass + ":checked").length) {
                 $(roleClass).parent().parent().parent().removeClass("shadow")
@@ -70,6 +71,7 @@ $(document).ready(() => {
 
     $('#submit').click(() => {
         client.publish('ewas.covid.edu', 'Voted')
+        $('input').prop('checked', false)
         $.ajax({
             type: "POST",
             url: "/ewas.covid.edu/submit",

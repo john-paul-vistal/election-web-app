@@ -81,7 +81,7 @@
                         <hr>
                         <a href="voters-registration-form"> <button class="btn btn-primary float-right px-5" style="border-radius:30px"><i class="fa fa-plus"></i> ADD</button></a>
                         <label style="margin-left:10px" class="d-inline mt-3" for=""><i class="fa fa-search"></i></label>
-                        <input class="search d-inline mt-3 py-2" type="text" placeholder="Search..." style="border:none;border-bottom:1px solid black;width: 50%;margin-left: -20px;">
+                        <input class="search d-inline mt-3 py-2" type="text" id="find" placeholder="Search..." style="border:none;border-bottom:1px solid black;width: 50%;margin-left: -20px;">
                         <div class="mt-2 p-2" style="overflow:scroll;height:600px">
                             <table id="header-fixed" class="table">
                                 <thead class="thead-light">
@@ -94,7 +94,7 @@
                                         <th scope="col">ACTION</th>
                                     </tr>
                                 </thead>
-                                <tbody>
+                                <tbody id="data">
                                     <% voters.forEach(voter=>{%>
                                         <tr>
                                             <td>

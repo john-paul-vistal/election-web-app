@@ -66,9 +66,6 @@ $(document).ready(function() {
         }
     };
 
-
-
-
     client.on('message', function(topic, message) {
         let president = [];
         let presidentData = [];
@@ -390,25 +387,28 @@ $(document).ready(function() {
     }
 
 
+    $.ajax('/ewas.covid.edu/admin/retrieveAllVotes', {
+        success: (data, status, xhr) => {
+            var unvotes = data.voters.length - data.votes.length
+            var votersCountData = {
+                labels: ["Already Voted", "Not Yet Voted"],
+                datasets: [{
+                    backgroundColor: ["rgba(0, 235, 82)", "rgba(246, 250, 30)"],
+                    data: [data.votes.length, unvotes],
+                }]
+            };
+            doughnut(votersCountData)
+        }
+
+    })
+
+    function doughnut(data) {
+        var myDoughnutChart = new Chart(voterCount, {
+            type: 'doughnut',
+            data: data,
+        });
+    }
 
 
 
-
-    var votersCountData = {
-        labels: ["Already Voted", "Not Yet Voted"],
-        datasets: [{
-            backgroundColor: ["rgba(0, 235, 82)", "rgba(246, 250, 30)"],
-            data: [65, 20, ],
-        }]
-    };
-
-
-
-
-
-
-    var myDoughnutChart = new Chart(voterCount, {
-        type: 'doughnut',
-        data: votersCountData,
-    });
 })

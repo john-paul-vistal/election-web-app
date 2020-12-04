@@ -50,6 +50,41 @@ $(document).ready(function() {
                 }
             })
         })
+
+
+
+        $.ajax('/ewas.covid.edu/admin/retrieveUnvoted', {
+            success: (data, status, xhr) => {
+                $('#tbody').empty()
+                data.forEach(element => {
+                    $('#tbody').append(`
+                <tr>
+                <td scope="row">${element.votersId}</td>
+                <td>${element.firstname}</td>
+                <td>${element.lastname}</td>
+                </tr>`)
+                });
+            }
+        })
+
+
+
+        $("#search").on("keyup", function() {
+            var value = $(this).val().toLowerCase();
+            $("#tbody tr").filter(function() {
+                $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+            });
+        });
+
+        $("#find").on("keyup", function() {
+            var value = $(this).val().toLowerCase();
+            $("#data tr").filter(function() {
+                $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+            });
+        });
+
+
+
     }) //End Code
 
 
@@ -60,4 +95,6 @@ function checkWidth() {
     } else {
         $('#sidebar-wrapper').css('left', '0px')
     }
+
+
 }

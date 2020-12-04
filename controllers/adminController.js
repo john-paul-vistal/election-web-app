@@ -182,7 +182,53 @@ const getCountData = async(request, response) => {
     }
 }
 
+const retrieveVotes = async(request, response) => {
+    try {
+        const votes = await Votes.find();
+        const voters = await Voters.find();
+        if (!votes) {
+            return response.status(400).json({
+                error: "Error in getting votes!",
+            });
+        }
+        response.status(200).json({ votes: votes, voters: voters })
+    } catch (e) {
+        return response.status(400).json({
+            error: e,
+        });
+    }
+}
 
+const retieveUnvoted = async(request, response) => {
+    try {
+        const votes = await Votes.find();
+        const voters = await Voters.find();
+        if (!votes || !voters) {
+            return response.status(400).json({
+                error: "Error in getting votes!",
+            });
+        }
+        let count = 0
+        var listVoters = []
+        voters.forEach((voter) => {
+            votes.forEach((vote) => {
+                if (voter.votersId == vote.votersId) {
+                    count += 1
+                }
+            })
+            if (count == 0) {
+                listVoters.push(voter)
+            }
+            count = 0
+        })
+        response.status(200).json(listVoters)
+    } catch (e) {
+        return response.status(400).json({
+            error: e,
+        });
+    }
+
+}
 module.exports = {
     getAdminRegistration,
     getDashboard,
@@ -194,5 +240,7 @@ module.exports = {
     getProfile,
     updateProfile,
     logout,
-    getCountData
+    getCountData,
+    retrieveVotes,
+    retieveUnvoted
 };

@@ -135,7 +135,7 @@
         <div class="card-body">
             <% presidents.forEach((president) => {%>
                 <div class="custom-control-lg custom-control custom-checkbox">
-                    <input class="custom-control-input checkPresident" name="c1" id="<%= president.id %>" type="checkbox" />
+                    <input class="custom-control-input checkPresident" name="c1" id="<%= president.id %>" type="checkbox" required />
                     <label class="custom-control-label" for="<%= president.id %>">
                     <%= president.firstname %> <%= president.middlename %> <%= president.lastname %>
                 </label>
@@ -149,7 +149,7 @@
         <div class="card-body">
             <% v_presidents.forEach((vice_president)=>{ %>
                 <div class="custom-control-lg custom-control custom-checkbox">
-                    <input class="custom-control-input checkVice" name="c1" id="<%= vice_president.id %>" type="checkbox" />
+                    <input class="custom-control-input checkVice" name="c1" id="<%= vice_president.id %>" type="checkbox" required />
                     <label class="custom-control-label" for="<%= vice_president.id %>">
                     <%= vice_president.firstname %> <%= vice_president.middlename %> <%= vice_president.lastname %>
                 </label>
@@ -163,7 +163,7 @@
         <div class="card-body">
             <% treasurers.forEach((treasurer)=>{ %>
                 <div class="custom-control-lg custom-control custom-checkbox">
-                    <input class="custom-control-input checkTreasurer" name="c1" id="<%= treasurer.id %>" type="checkbox" />
+                    <input class="custom-control-input checkTreasurer" name="c1" id="<%= treasurer.id %>" type="checkbox" required />
                     <label class="custom-control-label" for="<%= treasurer.id %>">
                     <%= treasurer.firstname %> <%= treasurer.middlename %> <%= treasurer.lastname %>
                 </label>
@@ -177,7 +177,7 @@
         <div class="card-body">
             <% auditors.forEach((auditor)=>{ %>
                 <div class="custom-control-lg custom-control custom-checkbox">
-                    <input class="custom-control-input checkAudit" name="c1" id="<%= auditor.id %>" type="checkbox" />
+                    <input class="custom-control-input checkAudit" name="c1" id="<%= auditor.id %>" type="checkbox" required />
                     <label class="custom-control-label" for="<%= auditor.id %>">
                     <%= auditor.firstname %> <%= auditor.middlename %> <%= auditor.lastname %>
                 </label>
@@ -191,7 +191,7 @@
         <div class="card-body">
             <% secretary.forEach((secretary_candidate)=>{ %>
                 <div class="custom-control-lg custom-control custom-checkbox">
-                    <input class="custom-control-input checkSecretary" name="c1" id="<%= secretary_candidate.id %>" type="checkbox" />
+                    <input class="custom-control-input checkSecretary" name="c1" id="<%= secretary_candidate.id %>" type="checkbox" required />
                     <label class="custom-control-label" for="<%= secretary_candidate.id %>">
                     <%= secretary_candidate.firstname %> <%=secretary_candidate.middlename %> <%= secretary_candidate.lastname %>
                 </label>
@@ -206,7 +206,7 @@
         <div class="card-body">
             <% publicInformation.forEach((pio)=>{ %>
                 <div class="custom-control-lg custom-control custom-checkbox">
-                    <input class="custom-control-input checkPIO" name="c1" id="<%= pio.id %>" type="checkbox" />
+                    <input class="custom-control-input checkPIO" name="c1" id="<%= pio.id %>" type="checkbox" required />
                     <label class="custom-control-label" for="<%= pio.id %>">
                     <%= pio.firstname %> <%=pio.middlename %> <%= pio.lastname %>
                 </label>
@@ -220,7 +220,7 @@
         <div class="card-body">
             <% peace_officers.forEach((poo)=>{ %>
                 <div class="custom-control-lg custom-control custom-checkbox">
-                    <input class="custom-control-input checkPOO" name="c1" id="<%= poo.id %>" type="checkbox" />
+                    <input class="custom-control-input checkPOO" name="c1" id="<%= poo.id %>" type="checkbox" required />
                     <label class="custom-control-label" for="<%= poo.id %>">
                     <%= poo.firstname %> <%=poo.middlename %> <%= poo.lastname %>
                 </label>
@@ -234,7 +234,7 @@
         <div class="card-body">
             <% seven_rep.forEach((seven)=>{ %>
                 <div class="custom-control-lg custom-control custom-checkbox">
-                    <input class="custom-control-input checkSeven" name="c1" id="<%= seven.id %>" type="checkbox" />
+                    <input class="custom-control-input checkSeven" name="c1" id="<%= seven.id %>" type="checkbox" required />
                     <label class="custom-control-label" for="<%= seven.id %>">
                     <%= seven.firstname %> <%=seven.middlename %> <%= seven.lastname %>
                 </label>
@@ -248,7 +248,7 @@
         <div class="card-body">
             <% eigth_rep.forEach((eigth)=>{ %>
                 <div class="custom-control-lg custom-control custom-checkbox">
-                    <input class="custom-control-input checkEight" name="c1" id="<%= eigth.id %>" type="checkbox" />
+                    <input class="custom-control-input checkEight" name="c1" id="<%= eigth.id %>" type="checkbox" required />
                     <label class="custom-control-label" for="<%= eigth.id %>">
                     <%= eigth.firstname %> <%=eigth.middlename %> <%= eigth.lastname %>
                 </label>
@@ -262,7 +262,7 @@
         <div class="card-body">
             <% nine_rep.forEach((nine)=>{ %>
                 <div class="custom-control-lg custom-control custom-checkbox">
-                    <input class="custom-control-input checkNine" name="c1" id="<%= nine.id %>" type="checkbox" />
+                    <input class="custom-control-input checkNine" name="c1" id="<%= nine.id %>" type="checkbox" required />
                     <label class="custom-control-label" for="<%= nine.id %>">
                     <%= nine.firstname %> <%=nine.middlename %> <%= nine.lastname %>
                 </label>
@@ -276,7 +276,7 @@
         <div class="card-body">
             <% ten_rep.forEach((ten)=>{ %>
                 <div class="custom-control-lg custom-control custom-checkbox">
-                    <input class="custom-control-input checkTen" name="c1" id="<%= ten.id %>" type="checkbox" />
+                    <input class="custom-control-input checkTen" name="c1" id="<%= ten.id %>" type="checkbox" required />
                     <label class="custom-control-label" for="<%= ten.id %>">
                     <%= ten.firstname %> <%=ten.middlename %> <%= ten.lastname %>
                 </label>
@@ -290,7 +290,7 @@
         <div class="card-body">
             <% eleven_rep.forEach((eleven)=>{ %>
                 <div class="custom-control-lg custom-control custom-checkbox">
-                    <input class="custom-control-input checkEleven" name="c1" id="<%= eleven.id %>" type="checkbox" />
+                    <input class="custom-control-input checkEleven" name="c1" id="<%= eleven.id %>" type="checkbox" required />
                     <label class="custom-control-label" for="<%= eleven.id %>">
                     <%= eleven.firstname %> <%=eleven.middlename %> <%= eleven.lastname %>
                 </label>
@@ -304,7 +304,7 @@
         <div class="card-body">
             <% twelve_rep.forEach((twelve)=>{ %>
                 <div class="custom-control-lg custom-control custom-checkbox">
-                    <input class="custom-control-input checkTwelve" name="c1" id="<%= twelve.id %>" type="checkbox" />
+                    <input class="custom-control-input checkTwelve" name="c1" id="<%= twelve.id %>" type="checkbox" required />
                     <label class="custom-control-label" for="<%= twelve.id %>">
                     <%= twelve.firstname %> <%=twelve.middlename %> <%= twelve.lastname %>
                 </label>
