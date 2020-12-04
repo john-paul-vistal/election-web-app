@@ -17,11 +17,12 @@ const logInPage = (request, response) => {
 };
 var voters_id;
 const validate = async(request, response) => {
-    const find = await Candidates.find({ id: request.body.id })
+    console.log(request.body.id)
+    const find = await Voters.find({ votersId: request.body.id })
     const check_voted = await PersonVoted.find({votersId: request.body.id})
     if (find.length == 0) {
         response.render('./voters/login', {
-            error: "Invalid id number! Try again!☺"
+            error: "Invalid id number! Try again!☺ cdcdcdcdcdcd"
         })
     }else if(check_voted.length != 0){
         response.render('./voters/login', {
