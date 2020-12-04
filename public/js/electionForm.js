@@ -1,4 +1,15 @@
 $(document).ready(() => {
+    var client = mqtt.connect('wss://mqtt.eclipse.org:443/mqtt')
+
+    client.on('connect', function() {
+        console.log('connected')
+        client.subscribe('ewas.covid.edu', function(err) {
+            if (!err) {
+                client.publish('ewas.covid.edu', 'Successfully Subscribe!')
+            }
+        })
+    })
+
 
     $('#submit').attr("disabled", true);
 
@@ -58,13 +69,14 @@ $(document).ready(() => {
     }
 
     $('#submit').click(() => {
+        client.publish('ewas.covid.edu', 'Voted')
         $.ajax({
             type: "POST",
             url: "/ewas.covid.edu/submit",
             data: { votes: arr },
             success: function(response) {
                 console.log(response.response)
-
+                window.location = "/ewas.covid.edu/vote-submitted"
             },
             error: (doc, textStatus, err) => {
                 alert('text status ' + textStatus + ', err ' + err)

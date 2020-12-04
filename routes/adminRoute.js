@@ -16,6 +16,7 @@ router.get("/voters-registration-form", AdminControllers.validateToken, AdminCon
 router.get("/candidate-registration-form", AdminControllers.validateToken, AdminControllers.getCandidacyForm);
 router.get("/view-profile/:id", AdminControllers.validateToken, AdminControllers.getProfile);
 router.post("/update/:id", AdminControllers.updateProfile);
+router.get("/get-count-data", AdminControllers.getCountData);
 
 
 // START ADMINISTRATION ROUTES

@@ -75,19 +75,11 @@ const loginValidation = async(request, response) => {
 const getDashboard = async(request, response) => {
     try {
         const adminUser = await Admin.findOne({ _id: request.user.id })
-        const adminsCount = await Admin.find()
-        const candidatesCount = await Candidate.find()
-        const votersCount = await Voters.find()
-        const votesCount = await Votes.find()
         response.render("./admin/dashboard", {
             id: request.user.id,
             fullname: request.user.fullName,
             email: adminUser.email,
-            position: adminUser.position,
-            adminsCount: adminsCount.length,
-            candidatesCount: candidatesCount.length,
-            votersCount: votersCount.length,
-            votesCount: votesCount.length,
+            position: adminUser.position
         })
 
     } catch (e) {
@@ -170,6 +162,26 @@ const logout = (request, response) => {
     }
 }
 
+const getCountData = async(request, response) => {
+    try {
+        const adminsCount = await Admin.find()
+        const candidatesCount = await Candidate.find()
+        const votersCount = await Voters.find()
+        const votesCount = await Votes.find()
+
+        response.status(200).json({
+            adminsCount: adminsCount.length,
+            candidatesCount: candidatesCount.length,
+            votersCount: votersCount.length,
+            votesCount: votesCount.length
+        })
+    } catch (e) {
+        return response.status(400).json({
+            error: e,
+        });
+    }
+}
+
 
 module.exports = {
     getAdminRegistration,
@@ -181,5 +193,6 @@ module.exports = {
     validateToken,
     getProfile,
     updateProfile,
-    logout
+    logout,
+    getCountData
 };

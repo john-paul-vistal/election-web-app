@@ -1,4 +1,5 @@
 const mongoose = require('mongoose')
+const jwt = require('jsonwebtoken')
 const Candidates = require('../models/candidate.model');
 const PersonVoted = require('../models/votes.model')
 const Voters = require('../models/voters.model')
@@ -15,6 +16,8 @@ const logInPage = (request, response) => {
         });
     }
 };
+
+
 var voters_id;
 const validate = async(request, response) => {
     const find = await Voters.find({ votersId: request.body.id })
@@ -28,10 +31,42 @@ const validate = async(request, response) => {
             error: "You Already Voted!"
         })
     } else {
-        voters_id = request.body.id
+        const votersId = request.body.id;
+        const accessToken = jwt.sign(votersId, process.env.ACCESS_TOKEN)
+            //Save cookie to client side
+        response.cookie('votersLog', accessToken, { httpOnly: true });
+        //Redirect
+        voters_id = request.body.id;
         response.redirect('/ewas.covid.edu/voting_form')
     }
 }
+
+const validateToken = (request, response, next) => {
+    try {
+        const votersLog = request.cookies.votersLog
+
+        if (votersLog === null) {
+            response.status(401).redirect("/ewas.covid.edu")
+        } else {
+            jwt.verify(votersLog, process.env.ACCESS_TOKEN, (error, data) => {
+                if (error) {
+                    response.status(401).redirect("/ewas.covid.edu")
+                } else {
+                    request.user = data
+                    next()
+                }
+            })
+
+        }
+    } catch (e) {
+        return response.status(400).json({
+            error: e,
+        });
+    }
+}
+
+
+
 
 const electionForm = async(request, response) => {
     const voter = await Voters.find({ votersId: voters_id })
@@ -104,9 +139,24 @@ let direct = async(id, vote_list) => {
 let increment = async(id) => {
     return await Candidates.findOneAndUpdate({ id: id }, { $inc: { 'votes': 1 } })
 }
+
+
+const finishVoting = (request, response) => {
+    try {
+        response.clearCookie('votersLog')
+        response.render('./voters/finishVoting')
+    } catch (e) {
+        return response.status(400).json({
+            error: e,
+        });
+    }
+};
+
 module.exports = {
     logInPage,
     electionForm,
     submit,
-    validate
+    validate,
+    finishVoting,
+    validateToken
 };

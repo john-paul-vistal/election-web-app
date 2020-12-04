@@ -1,5 +1,27 @@
 $(document).ready(function() {
 
+        var client = mqtt.connect('wss://mqtt.eclipse.org:443/mqtt')
+
+        client.on('connect', function() {
+            console.log('connected')
+            client.subscribe('ewas.covid.edu', function(err) {
+                if (!err) {
+                    client.publish('ewas.covid.edu', 'Successfully Subscribe!')
+                }
+            })
+        })
+        client.on('message', function(topic, message) {
+
+            $.ajax('/ewas.covid.edu/admin/get-count-data', {
+                success: function(data, status, xhr) {
+                    $('#voters').text(data.votersCount)
+                    $('#candidates').text(data.candidatesCount)
+                    $('#admin').text(data.adminsCount)
+                    $('#votes').text(data.votesCount)
+                }
+            });
+        })
+
         $('#menuBtn').click(function() {
             $('#sidebar-wrapper').css('left', '240px')
             $('#overlay').css('display', 'block')
@@ -28,8 +50,6 @@ $(document).ready(function() {
                 }
             })
         })
-
-
     }) //End Code
 
 

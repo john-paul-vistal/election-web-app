@@ -67,8 +67,9 @@ const getCandidateById = async(request, response) => {
 const addCandidate = async(request, response) => {
 
     try {
-        const candidate = await Voters.findOne({ votersId: request.body.id })
-        if (candidate != null) {
+        const registeredVoter = await Voters.findOne({ votersId: request.body.id })
+        const alreadyCandidate = await Candidate.findOne({ id: request.body.id })
+        if (registeredVoter != null && alreadyCandidate == null) {
             let newCandidate = new Candidate({
                 id: request.body.id,
                 firstname: request.body.firstname.toUpperCase(),
@@ -86,6 +87,8 @@ const addCandidate = async(request, response) => {
             }
 
             response.redirect("/ewas.covid.edu/admin/candidates")
+        } else if (alreadyCandidate != null) {
+            response.redirect("/ewas.covid.edu/admin/candidate-registration-form?error=You are already a candidate!")
         } else {
             response.redirect("/ewas.covid.edu/admin/candidate-registration-form?error=Invalid ID number")
         }
