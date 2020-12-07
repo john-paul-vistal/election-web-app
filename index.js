@@ -1,6 +1,7 @@
 const express = require("express");
 const bodyParser = require("body-parser");
 const cookieParser = require('cookie-parser')
+const morgan = require('morgan')
 const app = express();
 const port = 8002
 
@@ -14,6 +15,7 @@ require("dotenv").config();
 app.use(bodyParser.urlencoded({ extended: true }))
 
 app.use(cookieParser())
+    // app.use(morgan('tiny'))
 
 app.use('/public', express.static('public'));
 
