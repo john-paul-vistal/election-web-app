@@ -3,7 +3,7 @@ const bodyParser = require("body-parser");
 const cookieParser = require('cookie-parser')
 const morgan = require('morgan')
 const app = express();
-const port = 8002
+var port = process.env.PORT || 8002;
 
 
 const database = require("./services/database");
